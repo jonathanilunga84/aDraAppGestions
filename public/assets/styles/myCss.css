@@ -1,0 +1,31 @@
+/*#bg-color{
+	background-color: red;
+}*/
+/*.nav-sidebar > .nav-item > .nav-link.active*/
+
+/*.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active,*/ 
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active{
+    /*background-color: #007bff;*/
+    background-color: rgb(0, 121, 98);
+    color: #fff;
+}
+/*.nav-sidebar .nav-link{background-color: red;}*/
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link:hover{background-color: rgb(0, 121, 98);}
+
+/* Auth */
+.login-page{transform: translateY(-50px);}
+.btnAdra{background-color: rgb(0, 121, 98);}
+.text-Adra{color: rgb(0, 121, 98);}
+.border-Adra{border-top: 5px solid rgb(0, 121, 98);}
+
+/* illipsis class pour mettre le 3 ... de supension */
+.illipsis{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* footer Dashboard */
+.main-footer a{
+	color: rgb(0, 121, 98);
+}

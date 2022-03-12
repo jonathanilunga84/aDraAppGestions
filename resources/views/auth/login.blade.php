@@ -1,4 +1,50 @@
-<x-guest-layout>
+@extends('layouts.LayoutAuth')
+
+@section('form')
+<form action="{{ route('loginConnexion') }}" method="POST">
+    @csrf
+    <div class="row">
+        <div class="col">
+            @error('email')
+                <div class="validate text-danger">{{$message}}</div>
+            @enderror
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input type="email" name="email" id="email" class="form-control {{ $errors->has('email')? 'is-invalid': ''}}" placeholder="Email" value="{{old('email')}}" autofocus />
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-envelope text-Adra"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock text-Adra"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- ssdiv class="col-8">
+          <div class="icheck-primary">
+            <input type="checkbox" id="remember">
+            <label for="remember">
+              Remember Me
+            </label>
+          </div>
+        </div -->
+        <!-- /.col -->
+        <div class="col">
+            <button type="submit" class="btn btn-primaryM btn-block btnAdra text-light">Se connecter</button>
+        </div>
+        <!-- /.col -->
+    </div>
+</form>
+@endsection
+
+{{-- <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -53,4 +99,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-guest-layout> --}}
