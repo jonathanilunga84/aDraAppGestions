@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-12">
             <div class="jumbotron">
-                <h3>Bienvenu, <strong>{{userFullName()}}</strong></h3>
+                <h3>@auth Bienvenu, <strong>{{ userFullName() }}</strong> @else <p>Inconnue Non Authentifié</p>@endauth</h3>
                 <hr />
                 <p>Adventist Development Relief And Agency</p>
             </div>

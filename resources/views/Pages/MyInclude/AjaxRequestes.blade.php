@@ -1,0 +1,1 @@
+<script src="{{asset('/JSajax/Ajaxrequetes/Projet.js')}}" type="text/javascript"></script>

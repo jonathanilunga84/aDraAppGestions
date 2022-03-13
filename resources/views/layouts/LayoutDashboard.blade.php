@@ -50,7 +50,7 @@
                           <img class="profile-user-img img-fluid img-circle" src="{{asset('assets/images/user.png')}}" alt="User profile picture">
                         </div>
 
-                        <h3 class="profile-username text-center illipsis">{{ userFullName() }}</h3>
+                        <h3 class="profile-username text-center illipsis">@auth{{ userFullName() }} @else <p>Inconue Nos Authentifié</p>@endauth</h3>
 
                         <!-- p class="text-muted text-center">Software Engineer</p -->
 
@@ -84,5 +84,9 @@
         <script src="{{asset('assets/js/jquery.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('assets/js/adminlte.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('assets/plugins/sweetalert2-11.4.4/sweetalert2.all.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('assets/plugins/JQueryValidate/jquery.validate.min.js')}}" type="text/javascript"></script>
+        @Include('Pages/MyInclude/AjaxRequestes')
+        
     </body>
 </html>

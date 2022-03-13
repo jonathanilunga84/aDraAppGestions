@@ -25,6 +25,11 @@
 	overflow: hidden;
 }
 
+/* JqueryValidate Error style*/
+/*form label.error{}*/
+form label.error{color: red;}
+form .form-control.error{border: 1px solid red;}
+
 /* footer Dashboard */
 .main-footer a{
 	color: rgb(0, 121, 98);

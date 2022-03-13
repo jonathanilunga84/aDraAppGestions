@@ -1,7 +1,7 @@
 @extends('layouts.LayoutAuth')
 
 @section('form')
-<form action="{{ route('loginConnexion') }}" method="POST">
+<form action="{{ route('login') }}" method="POST">
     @csrf
     <div class="row">
         <div class="col">

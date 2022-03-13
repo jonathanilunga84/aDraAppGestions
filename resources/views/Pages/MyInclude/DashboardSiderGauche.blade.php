@@ -29,37 +29,48 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 @can('admin')
-                <!-- li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item menu-openM {{setMenuClass('admin.projets.', 'menu-open')}}">
+                    <a href="#" class="nav-link active {{setMenuClass('admin.projets.', 'active')}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Starter Pages
+                            Projet
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="{{route('admin.projets.listes.index')}}" class="nav-link activeM {{setMenuActive('admin.projets.listes.index')}}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Active Page</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
+                                <p>Listes</p>
                             </a>
                         </li>
                     </ul>
-                </li -->
-                <li class="nav-item">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-th"></i>
+                </li>
+                <li class="nav-item menu-openM {{setMenuClass('admin.projet3.', 'menu-open')}}">
+                    <a href="#" class="nav-link active {{setMenuClass('admin.projet3.', 'active')}}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Projet
+                            Agents
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.projet3.listes.create')}}" class="nav-link activeM {{setMenuActive('admin.projet3.listes.create')}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Listes</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+                <!-- li class="nav-item">
+                    <a href="#" class="nav-link activeM">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Projet M
+                        </p>
+                    </a>
+                </li -->               
                 @endcan
                 <!-- li class="nav-item">
                     <a href="#" class="nav-link activeM">
