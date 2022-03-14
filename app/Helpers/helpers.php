@@ -3,7 +3,8 @@
 use Illuminate\Support\Str;
 
 function userFullName(){
-	return auth()->user()->nom." ".auth()->user()->email;
+	//return auth()->user()->nom." ".auth()->user()->email;
+	return auth()->user()->email;
 }
 
 /*function setMenuOpen($route){

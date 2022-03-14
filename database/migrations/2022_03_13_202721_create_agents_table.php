@@ -14,9 +14,40 @@ class CreateAgentsTable extends Migration
     public function up()
     {
         Schema::create('agents', function (Blueprint $table) {
-            $table->id();
+            $table->id(); 
+            $table->string('numProjet');
+            $table->string('nom');
+            $table->string('postnom');
+            $table->string('prenom');
+            $table->string('sexe');
+            $table->string('telephone');
+            $table->string('lieuNaissance')->nullable();
+            $table->string('dateNaissance')->nullable();
+            $table->string('etatCivil')->nullable();
+            $table->string('email')->nullable();
+            $table->string('NumCarteIdentite')->nullable();
+            $table->string('nationalite')->nullable();
+            $table->string('adresseResidence')->nullable();
+            $table->string('NumCompteBancaire')->nullable();
+            $table->foreignId('projet_id') 
+                ->constrained('projets')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string('fonction')->nullable();
+            $table->string('lieuAffectation')->nullable();
+            $table->string('dateDebut')->nullable();
+            $table->string('dateFinPrevue')->nullable();
+            $table->string('DateFinEffective')->nullable();
+            $table->string('DureeContratMois')->nullable();
+            $table->string('DureeContratJour')->nullable();
+            $table->string('status')->nullable();
+            $table->foreignId('user_id') 
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
+        Schema::enableForeignkeyConstraints();
     }
 
     /**
@@ -26,6 +57,12 @@ class CreateAgentsTable extends Migration
      */
     public function down()
     {
+        Schema::table("users", function (Blueprint $table) {
+            $table->dropForeign("user_id");
+        });
+        Schema::table("projets", function (Blueprint $table) {
+            $table->dropForeign("projet_id");
+        });
         Schema::dropIfExists('agents');
     }
 }

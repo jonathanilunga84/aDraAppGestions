@@ -20,6 +20,7 @@ class CreateProjetsTable extends Migration
             $table->string('dateProjet');
             $table->string('dateFinProjet');
             $table->string('lieuProjet');
+            $table->string('status')->nullable();
             $table->foreignId('user_id') 
                 ->constrained('users')
                 ->onUpdate('cascade')

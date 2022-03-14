@@ -46,8 +46,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item menu-openM {{setMenuClass('admin.projet3.', 'menu-open')}}">
-                    <a href="#" class="nav-link active {{setMenuClass('admin.projet3.', 'active')}}">
+                <li class="nav-item menu-openM {{setMenuClass('admin.agents.', 'menu-open')}}">
+                    <a href="#" class="nav-link active {{setMenuClass('admin.agents.', 'active')}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Agents
@@ -56,7 +56,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.projet3.listes.create')}}" class="nav-link activeM {{setMenuActive('admin.projet3.listes.create')}}">
+                            <a href="{{route('admin.agents.listesAgents.index')}}" class="nav-link activeM {{setMenuActive('admin.agents.listesAgents.index')}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Listes</p>
                             </a>

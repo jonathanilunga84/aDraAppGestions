@@ -82,7 +82,7 @@
                                 </td>
                             </tr>
                             @empty
-                            <h4>Aucun enregistrement pour le moment...</h4>
+                            <h4 class="text-center">Aucun enregistrement pour le moment...</h4>
                             @endforelse
                         </tbody>
                     </table>
@@ -92,7 +92,7 @@
             <!-- /.card -->
         </div>
 
-        <div class="modal fade" id="modal-AjoutProjet">
+        <div class="modal fade" id="modal-AjoutProjet" tabindex="-1" data-backdrop="static">
             <div class="modal-dialog modal-AjoutProjet">
                 <div class="modal-content">
                     <div class="modal-header">

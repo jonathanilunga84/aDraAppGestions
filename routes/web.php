@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminProjet\ProjetController;
+use App\Http\Controllers\AdminAgent\AgentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,10 +38,11 @@ Route::group([
         });
 
         Route::group([
-            "prefix" => "projet3",
-            "as" => "projet3."
+            "prefix" => "agents",
+            "as" => "agents."
         ], function(){
-                Route::get('/create', [ProjetController::class, "create"])->name('listes.create');
+                Route::get('/listes', [AgentController::class, "index"])->name('listesAgents.index');
+                Route::post('/ajout/agent', [AgentController::class, "store"])->name('AjoutAgent.store');
         });
     }
 );
