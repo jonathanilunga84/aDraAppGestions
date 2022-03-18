@@ -32,6 +32,28 @@ class Agent extends Model
         'DureeContratMois',
         'DureeContratJour',
         'status',
+        'salaires',
         'user_id'
     ];
+
+    /* un agent est lié a un seul user */
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    //un Agent peu avoir un ou plusiers Conge
+    public function conges(){
+        return $this->hasMay(Conge::class);
+    }
+
+    /*public function Conges(){
+        return $this->belongsTo(Conge::class);
+    }*/
+
+    /* selection d'un projet lie a un agent */
+    public function projet()
+    {
+        return $this->belongsTo(Projet::class);
+        /*return $this->hasMany(Projet::class);*/
+    }
 }

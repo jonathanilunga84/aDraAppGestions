@@ -30,6 +30,36 @@
 form label.error{color: red;}
 form .form-control.error{border: 1px solid red;}
 
+/* button Supprimer selectionné */
+.btnSupprimerSelected{
+    text-align: center;
+}
+
+/* layout Auth */
+@media (max-width: 576px) {
+    .login-box{ width: 90%; }
+    /*.register-box {
+        margin-top: 0.5rem;
+        width: 90%;
+    }*/
+}
+
+@media (min-width: 600px) {
+    .login-box{ width: 80%;}
+}
+
+@media (min-width: 768px) {
+    .login-box{ width: 60%;}
+}
+
+@media (min-width: 768px) {
+    .login-box{ width: 60%;}
+}
+
+@media (min-width: 992px) {
+    .login-box{width: 40%;}
+}
+
 /* footer Dashboard */
 .main-footer a{
 	color: rgb(0, 121, 98);

@@ -10,6 +10,10 @@
             @enderror
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            
+        
     <div class="input-group mb-3">
         <input type="email" name="email" id="email" class="form-control {{ $errors->has('email')? 'is-invalid': ''}}" placeholder="Email" value="{{old('email')}}" autofocus />
         <div class="input-group-append">
@@ -26,6 +30,10 @@
             </div>
         </div>
     </div>
+
+    </div>
+    </div>
+
     <div class="row">
         <!-- ssdiv class="col-8">
           <div class="icheck-primary">

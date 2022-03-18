@@ -14,6 +14,15 @@ class Projet extends Model
         'dateProjet',
         'dateFinProjet',
         'lieuProjet',
+        'status',
         'user_id'
     ];
+
+    /* selection de plusieurs agents lieu au projet */
+    public function agents(){
+        return $this->hasMany(Agent::class);
+    }
+    public function conges(){
+        return $this->hasMany(Conge::class);
+    }
 }

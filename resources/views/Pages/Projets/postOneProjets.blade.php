@@ -21,9 +21,9 @@
 @endsection
 
 @section('content')
-    <div class="row card">
+    <div class="row cardM">
 
-        <div class="col-12">
+        <!-- div class="col-12">
             <div class="row">
                 <div class="col-sm-8"> 
                     <form action="{{route('admin.projets.searchProjet')}}" method="POST">
@@ -45,14 +45,14 @@
                     <button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">Ajout Projet</button>
                 </div>
             </div>   
-        </div>
+        </div -->
 
         <!-- table -->
         <div class="col-12">
-            <div class="card">
-                <!-- div class="card-header">
-                    <h3 class="card-title">Liste des Projets</h3>
-                    <div class="card-tools">
+            <div class="card" style="height: 50vh; padding-left: 10px;">
+                <div class="card-header">
+                    <h3 class="card-title">Information sur le Projets</h3>
+                    <!-- div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
                             <div class="input-group-append">
@@ -61,41 +61,27 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
-                </div -->
+                    </div -->
+                </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                        <thead>
-                            <tr>
-                                <!-- th>Numéro projet</th -->
-                                <th>Intitulé du projet</th>
-                                <th>Lieu(e) du projet</th>
-                                <th>Date début projet</th>
-                                <th>Date fin projet</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <!-- div id="show_all_projets_Search"></div -->
-                        <tbody>
-                             @forelse($listesProjets as $item)
-                            <tr>
-                                <!-- td>{{$item->numeroProjet}}</td -->
-                                <td>{{$item->intituleProjet}}</td>
-                                <td>{{$item->lieuProjet}}</td>
-                                <td>{{$item->dateProjet}}</td>
-                                <td><span class="tag tag-success">{{$item->dateFinProjet}}</span></td>
-                                <td>
-                                    <a id="{{$item->id}}" href="{{route('admin.projets.post.show',[$item->id])}}" class="btn btn-success btnVueGlobal" title="Vue globale sur le projet"><i class="far fa-eye"></i></a>
-                                    <a id="{{$item->id}}" href="#" class="btn btn-primary btnEditProjet" data-toggle="modal" data-target="#modal-ModifProjet"><i class="far fa-edit"></i></a>
-                                    <a id="{{$item->id}}" href="#" data-toggle="modal" data-target="#show_confirm_Delete_Form{{ $item->id }}" class="btn btn-danger show_confirm_Delete_Projet_URL showf" data-my="selectedLink{{$item->id}}" title="supprimer"><i class="far fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            @empty
-                            <h4 class="text-center">Aucun projet trouvée pour le moment...</h4>
-                            @endforelse 
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <div class="col-sm-12 mt-2">
+                            <h5>Intitule Projet : <span>{{$postProjets->intituleProjet}}</span></h5>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <p class="card-text">Date debut Projet : <strong>{{$postProjets->dateProjet}}</strong></p>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <p class="card-text">Date fin Projet : <strong>{{$postProjets->dateFinProjet}}</strong></p>
+                        </div>
+                        <div class="col-sm-12 mt-2">
+                            <p class="card-text">Lieu execution Projet : <strong>{{$postProjets->lieuProjet}}</strong></p>
+                        </div>
+                        <div class="col-sm-12 mt-2">
+                            <p class="card-text">Status Projet : <strong>{{$postProjets->status}}</strong></p>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>

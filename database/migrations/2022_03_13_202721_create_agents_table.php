@@ -15,12 +15,12 @@ class CreateAgentsTable extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id(); 
-            $table->string('numProjet');
+            $table->string('numProjet')->nullable();
             $table->string('nom');
-            $table->string('postnom');
-            $table->string('prenom');
+            $table->string('postnom')->nullable();
+            $table->string('prenom')->nullable();
             $table->string('sexe');
-            $table->string('telephone');
+            $table->string('telephone')->nullable();
             $table->string('lieuNaissance')->nullable();
             $table->string('dateNaissance')->nullable();
             $table->string('etatCivil')->nullable();
@@ -41,6 +41,7 @@ class CreateAgentsTable extends Migration
             $table->string('DureeContratMois')->nullable();
             $table->string('DureeContratJour')->nullable();
             $table->string('status')->nullable();
+            $table->string('salaires')->nullable();
             $table->foreignId('user_id') 
                 ->constrained('users')
                 ->onUpdate('cascade')

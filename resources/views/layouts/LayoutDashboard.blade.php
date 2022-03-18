@@ -76,7 +76,7 @@
 
             <footer class="main-footer">
                 <div class="float-right d-none d-sm-inline">
-                    Adventist Development Relief And Agency 
+                    Adventist Dévelopment And Relief Agency 
                 </div>
                 <strong>Copyright &copy; 2022 <a href="#">ADRA</a>.</strong> tout droit reservé.
             </footer>
@@ -87,6 +87,34 @@
         <script src="{{asset('assets/plugins/sweetalert2-11.4.4/sweetalert2.all.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('assets/plugins/JQueryValidate/jquery.validate.min.js')}}" type="text/javascript"></script>
         @Include('Pages/MyInclude/AjaxRequestes')
+
+        <script type="text/javascript">
+            /*$(document).ready(function(){
+                fetchAgents();
+    function fetchAgents(){
+        $.ajax({
+            type: "GET",
+            url: "{{route('admin.agents.listesAgents.getAgentsAjax')}}",
+            dateType: "json",
+            success: function (response){
+                //console.log(response.ListesAgents);
+                $.each(response.ListesAgents, function(key, item){
+                    $('#tbodyListesAgents').append('<tr>\
+                            <td>'+item.nom+'</td>\
+                            <td>'+item.postnom+'</td>\
+                            <td>'+item.prenom+'</td>\
+                            <td>'+item.fonction+'</td>\
+                            <td>'+item.dateDebut+'</td>\
+                            <td>'+item.dateFinPrevue+'</td>\
+                            <td><a href="" class="btn btn-success"><i class="far fa-eye"></i></a> <a href="{{route('dashboard.admin.home')}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>\
+                        </tr>');
+                });
+            }
+        });
+    }
+    
+            });*/
+    </script>
         
     </body>
 </html>

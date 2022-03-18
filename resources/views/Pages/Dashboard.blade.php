@@ -26,7 +26,7 @@
             <div class="jumbotron">
                 <h3>@auth Bienvenu, <strong>{{ userFullName() }}</strong> @else <p>Inconnue Non Authentifié</p>@endauth</h3>
                 <hr />
-                <p>Adventist Development Relief And Agency</p>
+                <p>Adventist Dévelopment And Relief Agency</p>
             </div>
         </div>
     </div>

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('assets/styles/myCss.css')}}" />
   </head>
 <body class="hold-transition login-page bg-dark">
-  <div class="login-box" style="width: 700px;">
+  <div class="login-box"> <!-- style="widthM: 700px;" -->
     <div class="row bg-dangerM justify-content-centerM">
       <div class="col-sm-12 bg-primaryM text-center">
         <img src="{{asset('assets/images/Logo adra.png')}}" style="height: 100px;" class="img-fluid" />
@@ -31,7 +31,9 @@
         <!-- p class="login-box-msg">Sign in to start your session</p -->
 
         <!-- form Auth -->
-          @yield('form')
+        <div class="container">
+           @yield('form')
+        </div>
         <!-- /End form Auth -->
         <!-- div class="social-auth-links text-center mt-2 mb-3">
           <a href="#" class="btn btn-block btn-primary">
