@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Conge;
 use App\Models\Agent;
+use PDF;
 
 class CongeController extends Controller
 {
@@ -73,7 +74,7 @@ class CongeController extends Controller
                 "dureeConge" => $request->dureeConge,
                 "dateDepart" => $request->dateDepart,
                 "dateRetour" => $request->dateRetour,
-                "statusConge"=> "encoure"
+                "statusConge"=> "en cours"
             ];
             //print_r($data);
             Conge::create($data);
@@ -143,5 +144,24 @@ class CongeController extends Controller
                                 ->get();
         //dd($listesConge);
         return view('Pages.Conge.listesConges', compact('listesConge'));
+    }
+
+    /* recuperation des agents lié au projet */
+    public function listeAgentsAffecteAuConge($id){
+        $listeAgentsAffecteAuConge = Conge::findOrfail($id); 
+        $infos = $listeAgentsAffecteAuConge->agent;
+        
+    }
+
+    public function listeStaffCongeEnCoursPdf(){
+
+        $listeStaffCongeEnCours = Conge::where('statusConge', "en cours")
+                                        ->orWhere('statusConge',"encours")
+                                        ->get();
+        return PDF::loadView('Pages/Pdf/listeStaffCongeEnCoursPdf', compact('listeStaffCongeEnCours'))
+                    ->stream();
+
+        //dd($listeStaffCongeEnCours);
+        return view('Pages/Pdf/listeStaffCongeEnCoursPdf', compact('listeStaffCongeEnCours'));
     }
 }

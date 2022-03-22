@@ -144,7 +144,10 @@
                         </div>  
                         <div class="col-sm-12 mt-2">
                             <p class="card-text">Salaire: <strong>{{$postInfosAgent->salaires}}</strong></p>
-                        </div> 
+                        </div>
+                        <div class="col-sm-12 mt-2">
+                            <p class="card-text" style="font-weight: bold">Liste des congé de l'agent: <strong><a href="{{route('admin.agents.post.listeCongeAgent',[$postInfosAgent->id])}}" title="click pour voir la liste des staff pour le projet">voir plus</a></strong></p>
+                        </div>  
                     </div>                
                 </div>
                 <!-- /.card-body -->

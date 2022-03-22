@@ -92,12 +92,14 @@
                         </div>
                         <div class="col-sm-12 mt-2 mb-2 btnAdra">
                             @if(! empty($postInfosConge->projet->intituleProjet))
-            <p class="card-text text-light">Projet : <strong>{{$postInfosConge->projet->intituleProjet}}</strong></p>
+                            <p class="card-text text-light">Projet : <strong>{{$postInfosConge->projet->intituleProjet}}</strong></p>
                             @else
                                 <p class="card-text text-light">Projet: Pas de projet pour cet Agent</p>
                             @endif
                         </div>
-                        
+                        <!-- div class="col-sm-12 mt-2 mb-2">
+                            <p class="card-text" style="font-weight: bold">Liste des staff affecté au projet: <strong><a href="{{route('admin.conges.post.listeAgentsAffecteAuConge',[$postInfosConge->id])}}" title="click pour voir la liste des staff pour le projet">voir plus</a></strong></p>
+                        </div -->                        
                     </div>
                 </div>
                 <!-- /.card-body -->

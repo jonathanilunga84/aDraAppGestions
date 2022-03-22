@@ -25,11 +25,11 @@
 
         <div class="col-12">
             <div class="row">
-                <div class="col-9 btn-dangerM">
+                <div class="col-4 btn-dangerM">
                     <form action="{{route('admin.conges.searchConge')}}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-5 bg-primaryM">
+                        <div class="col-12 bg-primaryM">
                             <div class="input-group input-group-sm btn-dangerM mt-2 mb-2" style="widthM: 500px;">
                         <!-- input type="text" name="AgentSearch" id="AgentSearch" class="form-control float-right" placeholder="Entrez nom ou postnom ou prenom agent" / -->
                         <select id="searchCongeVal" name="searchCongeVal" class="form-control float-right">
@@ -51,6 +51,10 @@
                 <div class="col-3 bg-primaryM">
                     <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">Ajout Projet</button -->
                     <a href="{{route('admin.conges.listesConge.index')}}" class="btn btn-block mt-2"><i class="fas fa-sync"></i></a>
+                </div>
+                <div class="col-5 bg-primaryM">
+                    <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">Impression liste projet encours</button -->
+                    <a href="{{route('admin.conges.post.listeStaffCongeEnCoursPdf')}}" target="_blank" class="btn btn-block mt-2 btnAdra text-light mb-2 mt-2"><i class="fas fa-print"></i> Impression liste projet en cours</a>
                 </div>
             </div>   
         </div>
@@ -100,11 +104,11 @@
                                 <td>{{$item->dureeConge}}</td>
                                 <td><span class="tag tag-success">{{$item->dateDepart}}</span></td>
                                 <td>{{$item->dateRetour}}</td>
-                                <td>Congé {{$item->statusConge}}</td>
+                                <td>{{$item->statusConge}}</td>
                                 <td>@if(! empty($item->projet->intituleProjet)){{$item->projet->intituleProjet}}@else impossible de trouvé le Projet concerné @endif</td>
                                 <td>
                                     <a id="{{$item->id}}" href="{{route('admin.conges.postConge.show',[$item->id])}}" class="btn btn-success btnVueGlobalConge" title="Vue global Congé"><i class="far fa-eye"></i></a>
-                                    <a href="" class="btn btn-primary" title="Modification"><i class="far fa-edit"></i></a> 
+                                    <!-- a href="" class="btn btn-primary" title="Modification"><i class="far fa-edit"></i></a --> 
                                     <a id="{{$item->id}}" href="#" class="btn btn-danger show_confirm_Delete_Conge_URL" title="supprimer"><i class="far fa-trash-alt"></i></a>
                                 </td>
                             </tr>

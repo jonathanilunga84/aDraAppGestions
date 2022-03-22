@@ -70,7 +70,7 @@
                                 <th>Nom</th>
                                 <th>Postnom</th>
                                 <th>Prenom</th>
-                                <th>Fonction</th>
+                                <th>Projet</th>
                                 <th>Date début Projet</th>
                                 <th>Date fin Projet</th>
                                 <th>Action</th>
@@ -83,7 +83,7 @@
                                 <td>{{$item->nom}}</td>
                                 <td>{{$item->postnom}}</td>
                                 <td>{{$item->prenom}}</td>
-                                <td>{{$item->fonction}}</td>
+                                <td>{{$item->projet->intituleProjet}}</td>
                                 <td>{{$item->dateDebut}}</td>
                                 <td>{{$item->dateFinPrevue}}</td>
                                 <td>

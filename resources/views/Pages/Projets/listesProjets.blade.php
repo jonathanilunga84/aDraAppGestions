@@ -174,7 +174,7 @@
                         @method('PUT')
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" name="IdModif" id="IdModif" />
+                            <input type="hidden" name="IdModif" id="IdModif" />
                             <!-- label for="numeroProjet">Numéro du Projet</label -->
                             <input type="hidden" name="numeroProjetM" class="form-control" id="numeroProjetM" value="000000" placeholder="Entrez Numéro du projet" aria-invalid="false">
                             <span class="text-danger error-text numeroProjet_error"></span>
@@ -208,7 +208,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                        <button id="btnSendModifProjet" type="submit" class="btn btn-primary">Enregister</button>
+                        <button id="btnSendModifProjet" type="submit" class="btn btn-primary">Valider le modification</button>
                     </div>
                     </form>
                 </div>

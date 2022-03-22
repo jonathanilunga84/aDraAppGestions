@@ -42,8 +42,9 @@ class Agent extends Model
     }
 
     //un Agent peu avoir un ou plusiers Conge
-    public function conges(){
-        return $this->hasMay(Conge::class);
+    public function conges()
+    {
+        return $this->hasMany(Conge::class);
     }
 
     /*public function Conges(){

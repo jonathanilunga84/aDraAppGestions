@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Projet;
+use PDF;
 
 class ProjetController extends Controller
 {
@@ -64,6 +65,7 @@ class ProjetController extends Controller
                 'dateProjet' => $request->dateProjet,
                 'dateFinProjet'=>$request->dateFinProjet,
                 'lieuProjet' => $request->lieuProjet,
+                'status' => "en cours",
                 'user_id'=> Auth()->user()->id
             ];
             Projet::create($data);
@@ -124,7 +126,7 @@ class ProjetController extends Controller
                 'dateProjet' => $request->dateProjetModif,
                 'dateFinProjet'=>$request->dateFinProjetModif,
                 'lieuProjet' => $request->lieuProjetModif,
-                'status' => "encours",
+                'status' => "en cours",
                 'user_id'=> Auth()->user()->id
             ];
             $infos = Projet::find($request->IdModif);
@@ -168,6 +170,33 @@ class ProjetController extends Controller
         return response()->json([
             'infosOneProjet'=>$infosOneProjet
         ]);
+    }
+
+    public function listeAgentsAffecteAuProjet($id){
+        $IdProjet = $id;
+        $listeAgentsAffecteAuProjet = Projet::findOrfail($id);
+        //$listeAgentsAffecteAuProjet->agents;
+        //dd($listeAgentsAffecteAuProjet->agents);
+        /*foreach($listeAgentsAffecteAuProjet->agents as $item){
+            echo ($item->id);
+        }*/
+        return view('Pages/Projets/listeAgentsAffecteAuProjet', compact("listeAgentsAffecteAuProjet","IdProjet"));
+    }
+
+    public function listeAgentsAffecteAuProjetPdf($id){
+        $IdProjet = $id;
+        $listeAgentsAffecteAuProjet = Projet::findOrfail($IdProjet);
+        $pdf = PDF::loadView('Pages/Pdf/listeAgentsAffecteAuProjetPdf', compact('listeAgentsAffecteAuProjet'));
+        $pdf->download('invoice.pdf');
+        //view()->share('employee',$listeAgentsAffecteAuProjet);
+        //return $pdf->stream();
+        //dd("imprimerpdf");
+        return PDF::loadView('Pages/Pdf/listeAgentsAffecteAuProjetPdf', compact('listeAgentsAffecteAuProjet'))
+                    //->setPaper('a4', 'landscape')
+                    ->setPaper('a4')
+                    ->setWarnings(false)
+                    ->stream();
+        //return view('Pages/Pdf/listeAgentsAffecteAuProjetPdf', compact("listeAgentsAffecteAuProjet"));
     }
 
     public function fectchAllProjetAjax(){

@@ -9,6 +9,7 @@ use App\Models\Projet;
 use App\Models\Agent;
 use App\Models\User;
 use Carbon\Carbon;
+use PDF;
 
 class AgentController extends Controller
 {
@@ -146,7 +147,7 @@ class AgentController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -286,4 +287,19 @@ class AgentController extends Controller
             'projetAgent'=>$projet
         ]);  
     }
+
+    public function listeCongeAgent($id){
+        $IdAgent = $id;
+        $listeCongeAgent = Agent::findOrfail($id);
+        return view('Pages/Agents/listeCongeAgent',compact('listeCongeAgent','IdAgent'));
+    }  
+
+    public function listeCongeOneAgentPdf($id){
+        $IdAgent = $id;
+        $listeCongeOneAgent = Agent::findOrfail($id);
+        //dd($IdAgent);
+        return PDF::loadView('Pages/Pdf/listeCongeOneAgentPdf', compact('listeCongeOneAgent'))
+                    ->stream();
+        //return view('Pages/Pdf/listeCongeOneAgentPdf', compact('listeCongeOneAgent'));
+    } 
 }

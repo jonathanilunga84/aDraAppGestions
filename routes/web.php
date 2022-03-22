@@ -41,6 +41,10 @@ Route::group([
             Route::post('/delete/projet', [ProjetController::class, "delete"])->name('projet.delete');
             Route::put('/update/projet', [ProjetController::class, "update"])->name('projet.update');
             Route::get('/post/projet/{id}', [ProjetController::class, "show"])->name('post.show');
+            Route::get('/liste/staff/affecter-au-projet/{id}', [ProjetController::class, "listeAgentsAffecteAuProjet"])->name('post.listeAgentsAffecteAuProjet');
+
+            /* cette route permet d'imprimer une liste des Agents lié à un projet' */
+            Route::get('/liste/staff/affecter-au-projet/pdf/{id}', [ProjetController::class, "listeAgentsAffecteAuProjetPdf"])->name('post.listeAgentsAffecteAuProjetPdf');
         });
 
         Route::group([
@@ -57,6 +61,12 @@ Route::group([
             Route::post('/ajout/agent', [AgentController::class, "store"])->name('AjoutAgent.store');
             Route::get('/delete/agent', [AgentController::class, "delete"])->name('agent.delete');
             Route::put('/update/agent', [AgentController::class, "update"])->name('agent.update');
+
+            /* liste des congé d'un Agent  */
+            Route::get('/liste/conge/agent/{id}', [AgentController::class, "listeCongeAgent"])->name('post.listeCongeAgent');
+            /* cette Route permet d'imprimer une liste de tout le congé pour un Agent */
+            Route::get('/liste/conge/un-agent/pdf/{id}', [AgentController::class, "listeCongeOneAgentPdf"])->name('post.listeCongeOneAgentPdf');
+
         });
 
         Route::group([
@@ -72,6 +82,10 @@ Route::group([
             Route::post('/search/conge', [CongeController::class, "searchConge"])->name('searchConge');
             /* Route pour supprimer un Congé */
             Route::get('/delete/conge', [CongeController::class, "delete"])->name('conge.delete');
+            Route::get('/liste/staff/affecter-au-conge/{id}', [CongeController::class, "listeAgentsAffecteAuConge"])->name('post.listeAgentsAffecteAuConge');
+
+            /* cette Route permet d'imprimer les congé en cours */
+            Route::get('/liste/conge/staff/en-cours/pdf/', [CongeController::class, "listeStaffCongeEnCoursPdf"])->name('post.listeStaffCongeEnCoursPdf');
         });
     }
 );
