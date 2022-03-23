@@ -102,8 +102,8 @@
                                 </td>
                                 <td>{{$item->circonstanceConge}}</td>
                                 <td>{{$item->dureeConge}}</td>
-                                <td><span class="tag tag-success">{{$item->dateDepart}}</span></td>
-                                <td>{{$item->dateRetour}}</td>
+                                <td><span class="tag tag-success">{{ Carbon\Carbon::parse($item->dateDepart)->format('d-m-Y') }}</span></td>
+                                <td>{{ Carbon\Carbon::parse($item->dateRetour)->format('d-m-Y') }}</td>
                                 <td>{{$item->statusConge}}</td>
                                 <td>@if(! empty($item->projet->intituleProjet)){{$item->projet->intituleProjet}}@else impossible de trouvé le Projet concerné @endif</td>
                                 <td>

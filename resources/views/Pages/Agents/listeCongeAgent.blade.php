@@ -8,7 +8,7 @@
 	<div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Tableau de bord / Listes des Staff </h1>
+                <h1 class="m-0">Tableau de bord / Staff </h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -51,7 +51,7 @@
         <div class="col-12">
             <div class="card" style="heightM: 50vh; padding-left: 10px;">
                 <div class="card-header">
-                    <h3 class="card-title">Liste des congé</h3>
+                    <h3 class="card-title">Liste des congés</h3>
                     <!-- div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -89,8 +89,8 @@
                                         <!-- td>{{$item->numeroProjet}}</td -->
                                         <td>{{$item->circonstanceConge}}</td>
                                         <td>{{$item->dureeConge}}</td>
-                                        <td>{{$item->dateDepart}}</td>
-                                        <td>{{$item->dateRetour}}</td>
+                                        <td>{{ Carbon\Carbon::parse($item->dateDepart)->format('d-m-Y') }}</td>
+                                        <td>{{ Carbon\Carbon::parse($item->dateRetour)->format('d-m-Y') }}</td>
                                         <td>{{$item->statusConge}}</td>
                                     </tr>
                                     @empty

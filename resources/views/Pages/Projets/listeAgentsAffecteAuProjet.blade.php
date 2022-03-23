@@ -71,7 +71,7 @@
                             <h5>Intitule Projet : <span>{{$listeAgentsAffecteAuProjet->intituleProjet}}</span></h5>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <p>Date fin projet : <span>{{$listeAgentsAffecteAuProjet->dateFinProjet}}</span></p>
+                            <p>Date fin projet : <span>{{ Carbon\Carbon::parse($listeAgentsAffecteAuProjet->dateFinProjet)->format('d-m-Y') }}</span></p>
                         </div>
                         <div class="col-sm-12 mt-2">
                             <table class="table table-hover text-nowrap">
@@ -98,17 +98,12 @@
                                         <td>{{$item->fonction}}</td>
                                     </tr>
                                     @empty
-                                        <h4 class="text-center bg-danger">Pas de Staff pour c'est projet</h4>
+                                        <h4 class="text-center bg-danger">Pas de Staff pour ce projet</h4>
                                     @endforelse 
                                     <p class="bg-danger"></p>
                                 </tbody>
-                            </table>
-                            
-                            
-                        </div>
-                        
-
-                        
+                            </table>                   
+                        </div>            
                     </div>
                 </div>
                 <!-- /.card-body -->

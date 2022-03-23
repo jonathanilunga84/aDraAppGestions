@@ -102,8 +102,8 @@
                                 <td>{{$item->prenom}}</td>
                                 <td>{{$item->fonction}}</td>
                                 <td>{{$item->projet->intituleProjet}}</td>
-                                <td>{{$item->dateDebut}}</td>
-                                <td>{{$item->dateFinPrevue}}</td>
+                                <td>{{ Carbon\Carbon::parse($item->dateDebut)->format('d-m-Y') }}</td>
+                                <td>{{ Carbon\Carbon::parse($item->dateFinPrevue)->format('d-m-Y') }}</td>
                                 <td>
                                     <a id="{{$item->id}}" href="{{route('admin.agents.AgentPost.show',[$item->id])}}" class="btn btn-success btnVueGlobalAgent" title="Vue globale sur le Agent"><i class="far fa-eye"></i></a>
                                     <a id="{{$item->id}}" href="#" class="btn btn-primary btnModifAgent btnModifAgentGetInfos" data-toggle="modal" data-target="#modal-ModifAgent"><i class="far fa-edit"></i></a>

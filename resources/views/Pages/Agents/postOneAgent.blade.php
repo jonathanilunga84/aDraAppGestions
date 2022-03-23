@@ -87,7 +87,7 @@
                             <p class="card-text">Lieu de Naissance: <strong>{{$postInfosAgent->lieuNaissance}}</strong></p>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <p class="card-text">Date Naissance: <strong>{{$postInfosAgent->dateNaissance}}</strong></p>
+                            <p class="card-text">Date Naissance: <strong>{{ Carbon\Carbon::parse($postInfosAgent->dateNaissance)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-12 mt-2">
                             <p class="card-text">Etat Civil: <strong>{{$postInfosAgent->etatCivil}}</strong></p>
@@ -123,13 +123,13 @@
                     </div> 
                     <div class="row">
                         <div class="col-sm-3 mt-2 bg-success">
-                            <p class="card-text">Date Debut: <strong>{{$postInfosAgent->dateDebut}}</strong></p>
+                            <p class="card-text">Date Debut: <strong>{{ Carbon\Carbon::parse($postInfosAgent->dateDebut)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-3 mt-2">
-                            <p class="card-text">Date Fin Prevue: <strong>{{$postInfosAgent->dateFinPrevue}}</strong></p>
+                            <p class="card-text">Date Fin Prevue: <strong>{{ Carbon\Carbon::parse($postInfosAgent->dateFinPrevue)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-3 mt-2">
-                            <p class="card-text">Date Fin Effective: <strong>{{$postInfosAgent->DateFinEffective}}</strong></p>
+                            <p class="card-text">Date Fin Effective: <strong>{{ Carbon\Carbon::parse($postInfosAgent->DateFinEffective)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-3 mt-2">
                             <p class="card-text">Durée Contrat Mois: <strong>{{$postInfosAgent->DureeContratMois}}</strong></p>

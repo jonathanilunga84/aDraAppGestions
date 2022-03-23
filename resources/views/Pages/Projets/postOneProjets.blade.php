@@ -51,7 +51,7 @@
         <div class="col-12">
             <div class="card" style="height: 50vh; padding-left: 10px;">
                 <div class="card-header">
-                    <h3 class="card-title">Information sur le Projets</h3>
+                    <h3 class="card-title">Information sur le Projet</h3>
                     <!-- div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -70,10 +70,10 @@
                             <h5>Intitule Projet : <span>{{$postProjets->intituleProjet}}</span></h5>
                         </div>
                         <div class="col-sm-3 mt-2">
-                            <p class="card-text">Date debut Projet : <strong>{{$postProjets->dateProjet}}</strong></p>
+                            <p class="card-text">Date debut Projet : <strong>{{ Carbon\Carbon::parse($postProjets->dateProjet)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-3 mt-2">
-                            <p class="card-text">Date fin Projet : <strong>{{$postProjets->dateFinProjet}}</strong></p>
+                            <p class="card-text">Date fin Projet : <strong>{{ Carbon\Carbon::parse($postProjets->dateFinProjet)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-12 mt-2">
                             <p class="card-text">Lieu execution Projet : <strong>{{$postProjets->lieuProjet}}</strong></p>
@@ -82,7 +82,7 @@
                             <p class="card-text">Status Projet : <strong>{{$postProjets->status}}</strong></p>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <p class="card-text" style="font-weight: bold">Liste des staff affecté au projet: <strong><a href="{{route('admin.projets.post.listeAgentsAffecteAuProjet',[$postProjets->id])}}" title="click pour voir la liste des staff pour le projet">voir plus</a></strong></p>
+                            <p class="card-text" style="font-weight: bold">Liste des staffs affectés au projet: <strong><a href="{{route('admin.projets.post.listeAgentsAffecteAuProjet',[$postProjets->id])}}" title="click pour voir la liste des staff pour le projet">voir plus</a></strong></p>
                         </div>
                     </div>
                 </div>

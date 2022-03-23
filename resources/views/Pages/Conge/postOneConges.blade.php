@@ -82,10 +82,10 @@
                             <p class="card-text">Durée Conge : <strong>{{$postInfosConge->dureeConge}}</strong></p>
                         </div>
                         <div class="col-sm-3 mt-2">
-                            <p class="card-text">Date Depart: <strong>{{$postInfosConge->dateDepart}}</strong></p>
+                            <p class="card-text">Date Depart: <strong>{{ Carbon\Carbon::parse($postInfosConge->dateDepart)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <p class="card-text">Date Retour: <strong>{{$postInfosConge->dateRetour}}</strong></p>
+                            <p class="card-text">Date Retour: <strong>{{ Carbon\Carbon::parse($postInfosConge->dateRetour)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-12 mt-2">
                             <p class="card-text">Observation Congé: <strong>{{$postInfosConge->statusConge}}</strong></p>
