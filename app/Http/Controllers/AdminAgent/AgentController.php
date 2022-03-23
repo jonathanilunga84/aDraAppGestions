@@ -257,14 +257,31 @@ class AgentController extends Controller
 
     public function searchAgentParIdentite(Request $request){
         $req = $request->AgentSearch;
+        $dateDebut = $request->dateDebuts;
+        $dateFinPrevues = $request->dateFinPrevues;
+        //dd($dateDebut);
         //dd($req);
         $listesProjets = Projet::all();
         //$listesAgents = Agent::where("nom", 'like', '%'.$req.'%' or "postnom", 'like', '%'.$req.'%')->get();
         $listesAgents = Agent::where("nom", 'like', '%'.$req.'%')
                                 ->orWhere("postnom", 'like', '%'.$req.'%')
                                 ->orWhere("prenom", 'like', '%'.$req.'%')
+                                ->orWhere("fonction", 'like', '%'.$req.'%')
+                                //->orwhereBetween("dateDebut", [$dateDebut,$dateFinPrevues])
                                 ->get();
         //dd($listesProjets);
+        return view('Pages.Agents.listesAgents', compact('listesAgents','listesProjets'));
+    }
+
+    public function searchAgentParDate(Request $request){
+        $dateDebut = $request->dateDebuts;
+        $dateFinPrevues = $request->dateFinPrevues;
+        //dd($dateFinPrevues);
+        $listesProjets = Projet::all();
+        $listesAgents = Agent::whereBetween("dateDebut", [$dateDebut,$dateFinPrevues])
+                                ->orwhereBetween("dateFinPrevue", [$dateDebut,$dateFinPrevues])  
+                                ->get();
+        //dd($listesAgents);
         return view('Pages.Agents.listesAgents', compact('listesAgents','listesProjets'));
     }
 

@@ -56,6 +56,8 @@ Route::group([
             Route::get('/post/agent/{id}', [AgentController::class, "show"])->name('AgentPost.show');
             //cette Route permet faire une recherche par nom,postnom,prenom
             Route::post('/search/agent/', [AgentController::class, "searchAgentParIdentite"])->name('searchAgentParIdentite');
+            Route::post('/search/agent/date', [AgentController::class, "searchAgentParDate"])->name('searchAgentParDate');
+
             Route::get('/listes/agent/ajax', [AgentController::class, "getAgentsAjax"])->name('listesAgents.getAgentsAjax');
             Route::get('/infos/agent/ajax', [AgentController::class, "showInfoAgent"])->name('getInfosAgent.showInfoAgent');
             Route::post('/ajout/agent', [AgentController::class, "store"])->name('AjoutAgent.store');

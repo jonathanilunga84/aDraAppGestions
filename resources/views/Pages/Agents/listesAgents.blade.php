@@ -24,23 +24,39 @@
     <div class="row card">
         <div class="col-12">
             <div class="row">
-                <div class="col-sm-8">
-                    <form action="{{route('admin.agents.searchAgentParIdentite')}}" method="POST">
-                    @csrf
-                    <div class="input-group input-group-sm btn-dangerM mt-2" style="widthM: 500px;">
-                        <input type="text" name="AgentSearch" id="AgentSearch" class="form-control float-right" placeholder="Entrez nom ou postnom ou prenom agent" />
-                        <div class="input-group-append btn-dangerM">
-                            <button type="submit" class="btn btn-default">
-                            <i class="fas fa-search"></i>
-                            </button>
+                <div class="col-sm-4 btn-dangerM mt-2">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form action="{{route('admin.agents.searchAgentParIdentite')}}" method="POST">
+                                @csrf
+                                <div class="input-group input-group-sm btn-dangerM mt-2M" style="widthM: 500px;">
+                                    <input type="text" name="AgentSearch" id="AgentSearch" class="form-control float-right" placeholder="nom ou postnom ou prenom agent ou Fonction" />
+                                    <div class="input-group-append btn-dangerM">
+                                        <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>  
                         </div>
                     </div>
-                    </form>
                 </div>
+                <form action="{{route('admin.agents.searchAgentParDate')}}" method="POST" class="bg-dangerM">
+                    @csrf
+                    <div class="col-sm-5 d-flex mb-3 mt-2">
+                        
+                            <input type="date" name="dateDebuts" class="mr-1" title="recherche par date debut" />
+                            <input type="date" name="dateFinPrevues" class="mr-1" title="et recheche par date fin" />
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>   
+                        
+                    </div>
+                </form>
                 <div class="col-sm-1">
                     <a href="{{route('admin.agents.listesAgents.index')}}" class="btn btn-block mt-2" title="actualiser la page"><i class="fas fa-sync"></i></a>
                 </div>
-                <div class="col-sm-3 btn-dangerM">
+                <div class="col-sm-2 btn-dangerM">
                     <button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">Ajout Agents</button>
                 </div>
             </div>   
@@ -70,6 +86,7 @@
                                 <th>Nom</th>
                                 <th>Postnom</th>
                                 <th>Prenom</th>
+                                <th>Fonction</th>
                                 <th>Projet</th>
                                 <th>Date début Projet</th>
                                 <th>Date fin Projet</th>
@@ -83,6 +100,7 @@
                                 <td>{{$item->nom}}</td>
                                 <td>{{$item->postnom}}</td>
                                 <td>{{$item->prenom}}</td>
+                                <td>{{$item->fonction}}</td>
                                 <td>{{$item->projet->intituleProjet}}</td>
                                 <td>{{$item->dateDebut}}</td>
                                 <td>{{$item->dateFinPrevue}}</td>
