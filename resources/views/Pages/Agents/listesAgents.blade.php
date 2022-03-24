@@ -615,7 +615,7 @@
             <div class="modal-dialog modal-AjoutConge">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h6 class="modal-title">Formulaire pour le Congé</h6>
+                        <h6 class="modal-title">Formulaire demande de Congé</h6>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -654,10 +654,42 @@
                             </select>
                             <span class="text-danger error-text circonstanceConge_error"></span>
                         </div> 
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="totalJourPrevueConge">Total jours prevue</label>
+                                    <input type="text" name="totalJourPrevueConge" class="form-control" id="totalJourPrevueConge" placeholder="Total jours prevue pour le congé" aria-invalid="false" title="Total jours prevue pour le congé">
+                                    <span class="text-danger error-text totalJourPrevueConge_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="congeDejaPris">Congé déjà pris</label>
+                                    <input type="text" name="congeDejaPris" class="form-control" id="congeDejaPris" placeholder="Conge déjà pris" aria-invalid="false">
+                                    <span class="text-danger error-text congeDejaPris_error"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="nbrJrD">Nombre de jour demandé</label>
+                                    <input type="text" name="nbrJrD" class="form-control" id="nbrJrD" placeholder="Nombre de jour demandé pour le congé" aria-invalid="false" title="Total jours prevue pour le congé">
+                                    <span class="text-danger error-text nbrJrD_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="nbrJourR">Nombre des jours restants</label>
+                                    <input type="text" name="nbrJourR" class="form-control" id="nbrJourR" placeholder="Conge déjà pris" aria-invalid="false">
+                                    <span class="text-danger error-text nbrJourR_error"></span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label for="dureeConge">Durée</label>
-                            <input type="text" name="dureeConge" class="form-control" id="dureeConge" placeholder="Entrez lieu du projet" aria-invalid="false">
-                            <span class="text-danger error-text dureeConge_error"></span>
+                            <label for="explicationConge">Total jours prevue</label>
+                            <textarea class="form-control" name="explicationConge" id="explicationConge" rows="2" cols="5" placeholder="explication facultatif"></textarea>
+                            <span class="text-danger error-text explicationConge_error"></span>
                         </div>
                         <div class="row">
                             <div class="col-6">

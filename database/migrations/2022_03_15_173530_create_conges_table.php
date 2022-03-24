@@ -24,7 +24,11 @@ class CreateCongesTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('circonstanceConge')->nullable();
-            $table->string('dureeConge')->nullable();
+            $table->string('totalJourPrevueConge')->nullable();
+            $table->string('congeDejaPris')->nullable();
+            $table->string('nbrJrD')->nullable();
+            $table->string('nbrJourR')->nullable();
+            $table->text('explicationConge')->nullable();
             $table->string('dateDepart')->nullable();
             $table->string('dateRetour')->nullable();
             $table->string('statusConge')->nullable();

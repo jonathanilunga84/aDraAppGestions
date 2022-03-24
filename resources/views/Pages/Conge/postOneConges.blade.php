@@ -78,8 +78,20 @@
                         <div class="col-sm-12 mt-2">
                             <h5>Circonstance Conge: <span>{{$postInfosConge->circonstanceConge}}</span></h5>
                         </div>
+                        <div class="col-sm-12 mt-2">
+                            <p>Nombre de jour prévue: <span>{{$postInfosConge->totalJourPrevueConge}}</span></p>
+                        </div>
+                        <div class="col-sm-12 mt-2">
+                            <p>jour déjà pris: <span>{{$postInfosConge->congeDejaPris}}</span></p>
+                        </div>
                         <div class="col-sm-3 mt-2">
-                            <p class="card-text">Durée Conge : <strong>{{$postInfosConge->dureeConge}}</strong></p>
+                            <p class="card-text">Nombre de jour demandé : <strong>{{$postInfosConge->nbrJrD}}</strong></p>
+                        </div>
+                        <div class="col-sm-12 mt-2">
+                            <p>jour restant: <span>{{$postInfosConge->nbrJourR}}</span></p>
+                        </div>
+                        <div class="col-sm-3 mt-2">
+                            <p class="card-text">Commentaires : <strong>{{$postInfosConge->explicationConge}}</strong></p>
                         </div>
                         <div class="col-sm-3 mt-2">
                             <p class="card-text">Date Depart: <strong>{{ Carbon\Carbon::parse($postInfosConge->dateDepart)->format('d-m-Y') }}</strong></p>

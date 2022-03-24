@@ -82,7 +82,7 @@
                             <tr>
                                 <th>Indentité</th>
                                 <th>Congé</th>
-                                <th>Durée congé</th>
+                                <th>Jour demandé</th>
                                 <th>Date depart</th>
                                 <th>Date retour</th>
                                 <th>Observation</th>
@@ -101,7 +101,7 @@
                                 @endif
                                 </td>
                                 <td>{{$item->circonstanceConge}}</td>
-                                <td>{{$item->dureeConge}}</td>
+                                <td>{{$item->nbrJrD}}</td>
                                 <td><span class="tag tag-success">{{ Carbon\Carbon::parse($item->dateDepart)->format('d-m-Y') }}</span></td>
                                 <td>{{ Carbon\Carbon::parse($item->dateRetour)->format('d-m-Y') }}</td>
                                 <td>{{$item->statusConge}}</td>

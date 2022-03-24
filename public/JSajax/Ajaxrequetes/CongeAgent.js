@@ -45,8 +45,19 @@
          		required : true, 
          		maxlength : 100
         	},
-        	dureeConge : { 
+        	totalJourPrevueConge : { 
+        		required: true,
          		maxlength : 100
+        	},
+        	congeDejaPris : {
+        		maxlength : 100
+        	},
+        	nbrJrD : {
+        		required : true,
+        		maxlength : 100
+        	},
+        	nbrJourR : {
+        		maxlength : 100
         	},
         	dateDepart : {
          		maxlength : 15
@@ -68,8 +79,16 @@
         	circonstanceConge : {
         		maxlength : "Circonstance Conge doit avoir au max 100 caractère"
         	},
-        	dureeConge : { 
+        	totalJourPrevueConge : { 
+        		required : "le Total des jours prevue obligatoire",
         		maxlength : "Duéer Conge doit avoir au max 100 caractère"
+        	},
+        	nbrJrD : {
+        		required : "Le nombre de jours demande obligatoire",
+        		maxlength : "Le nombre de jours demandé doit avoir au max 100 caractère"
+        	},
+        	nbrJourR : {
+        		maxlength : "Le nombre de jour restant doit avoir au max 100 caractère"
         	},
         	dateDepart : {
          		maxlength : "Date de dapart Conge doit avoir au max 15 caractère"
@@ -86,7 +105,11 @@
     		let identite = $('#identite').val();
     		let projet_idConge = $('#projet_idConge').val();
     		let circonstanceConge = $('#circonstanceConge').val();
-    		let dureeConge = $('#dureeConge').val();
+    		let totalJourPrevueConge = $('#totalJourPrevueConge').val();
+    		let congeDejaPris = $('#congeDejaPris').val();
+    		let nbrJrD = $('#nbrJrD').val();
+    		let nbrJourR = $('#nbrJourR').val();
+    		let explicationConge = $('#explicationConge').val();
     		let dateDepart = $('#dateDepart').val();
     		let dateRetour = $('#dateRetour').val();
 
@@ -102,7 +125,11 @@
 			        identite,
 			        projet_idConge,
 			        circonstanceConge,
-			        dureeConge,
+			        totalJourPrevueConge,
+			        congeDejaPris,
+			        nbrJourR,
+			        nbrJrD,
+			        explicationConge,
 			        dateDepart,
 			        dateRetour
 			    },
