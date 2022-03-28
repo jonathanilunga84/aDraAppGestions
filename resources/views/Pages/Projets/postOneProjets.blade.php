@@ -67,16 +67,16 @@
                 <div class="card-body table-responsive p-0">
                     <div class="row">
                         <div class="col-sm-12 mt-2">
-                            <h5>Intitule Projet : <span>{{$postProjets->intituleProjet}}</span></h5>
+                            <h5>Intitulé Projet : <span>{{$postProjets->intituleProjet}}</span></h5>
                         </div>
                         <div class="col-sm-3 mt-2">
-                            <p class="card-text">Date debut Projet : <strong>{{ Carbon\Carbon::parse($postProjets->dateProjet)->format('d-m-Y') }}</strong></p>
+                            <p class="card-text">Date début Projet : <strong>{{ Carbon\Carbon::parse($postProjets->dateProjet)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-3 mt-2">
                             <p class="card-text">Date fin Projet : <strong>{{ Carbon\Carbon::parse($postProjets->dateFinProjet)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <p class="card-text">Lieu execution Projet : <strong>{{$postProjets->lieuProjet}}</strong></p>
+                            <p class="card-text">Lieu exécution Projet : <strong>{{$postProjets->lieuProjet}}</strong></p>
                         </div>
                         <div class="col-sm-12 mt-2">
                             <p class="card-text">Status Projet : <strong>{{$postProjets->status}}</strong></p>

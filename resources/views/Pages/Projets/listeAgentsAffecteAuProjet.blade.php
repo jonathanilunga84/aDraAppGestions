@@ -8,7 +8,7 @@
 	<div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Tableau de bord / Listes des Staff </h1>
+                <h1 class="m-0">Tableau de bord / Listes des Staffs </h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -43,7 +43,7 @@
                 </div -->
                 <div class="col-sm-3">
                     <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">imprimer Staff Projet</button -->
-                    <a href="{{route('admin.projets.post.listeAgentsAffecteAuProjetPdf',[$IdProjet])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2">Imprimer Staff Projet</a>
+                    <a href="{{route('admin.projets.post.listeAgentsAffecteAuProjetPdf',[$IdProjet])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2">Imprimer Staffs Projet</a>
                 </div>
             </div>   
         </div>
@@ -52,7 +52,7 @@
         <div class="col-12">
             <div class="card" style="heightM: 50vh; padding-left: 10px;">
                 <div class="card-header">
-                    <h3 class="card-title">Liste des Staff affecté au projet</h3>
+                    <h3 class="card-title">Liste des Staffs affectés au projet</h3>
                     <!-- div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -68,7 +68,7 @@
                 <div class="card-body table-responsive p-0">
                     <div class="row">
                         <div class="col-sm-12 mt-2">
-                            <h5>Intitule Projet : <span>{{$listeAgentsAffecteAuProjet->intituleProjet}}</span></h5>
+                            <h5>Intitulé Projet : <span>{{$listeAgentsAffecteAuProjet->intituleProjet}}</span></h5>
                         </div>
                         <div class="col-sm-12 mt-2">
                             <p>Date fin projet : <span>{{ Carbon\Carbon::parse($listeAgentsAffecteAuProjet->dateFinProjet)->format('d-m-Y') }}</span></p>

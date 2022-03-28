@@ -113,7 +113,7 @@
                                 </td>
                             </tr>
                             @empty
-                            <h4 class="text-center">Aucun congé trouvée pour le moment...</h4>
+                            <h4 class="text-center">Aucun congé trouvé pour le moment...</h4>
                             @endforelse
                         </tbody>
                     </table>

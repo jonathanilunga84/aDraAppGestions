@@ -136,6 +136,8 @@ class AgentController extends Controller
     public function show($id)
     {
        $postInfosAgent = Agent::findOrfail($id);
+       //$dc = $postInfosAgent->piecejointe;
+       //dd($dc);
        return view('Pages/Agents/postOneAgent', compact('postInfosAgent'));
     }
 

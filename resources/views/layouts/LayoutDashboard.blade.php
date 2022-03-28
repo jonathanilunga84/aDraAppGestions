@@ -85,6 +85,8 @@
         <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('assets/js/adminlte.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('assets/plugins/sweetalert2-11.4.4/sweetalert2.all.min.js')}}" type="text/javascript"></script>
+        @include('Pages.IncludeSweetAlert.success')
+        @include('Pages.IncludeSweetAlert.error')
         <script src="{{asset('assets/plugins/JQueryValidate/jquery.validate.min.js')}}" type="text/javascript"></script>
         @Include('Pages/MyInclude/AjaxRequestes')
 

@@ -73,6 +73,7 @@
                                 <th>Lieu(e) du projet</th>
                                 <th>Date début projet</th>
                                 <th>Date fin projet</th>
+                                <th>Observation</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -85,6 +86,7 @@
                                 <td>{{$item->lieuProjet}}</td>
                                 <td>{{ Carbon\Carbon::parse($item->dateProjet)->format('d-m-Y') }}</td>
                                 <td><span class="tag tag-success">{{ Carbon\Carbon::parse($item->dateFinProjet)->format('d-m-Y') }}</span></td>
+                                <td>{{$item->status}}</td>
                                 <td>
                                     <a id="{{$item->id}}" href="{{route('admin.projets.post.show',[$item->id])}}" class="btn btn-success btnVueGlobal" title="Vue globale sur le projet"><i class="far fa-eye"></i></a>
                                     <a id="{{$item->id}}" href="#" class="btn btn-primary btnEditProjet" data-toggle="modal" data-target="#modal-ModifProjet"><i class="far fa-edit"></i></a>

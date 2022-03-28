@@ -1,6 +1,7 @@
 <script src="{{asset('/JSajax/Ajaxrequetes/Projet.js')}}" type="text/javascript"></script>
 <script src="{{asset('/JSajax/Ajaxrequetes/Agent.js')}}" type="text/javascript"></script>
 <script src="{{asset('/JSajax/Ajaxrequetes/CongeAgent.js')}}" type="text/javascript"></script>
+<script src="{{asset('/JSajax/Ajaxrequetes/PieceJointe.js')}}" type="text/javascript"></script>
 
 <script type="text/javascript">
 	//function pour supprimer un projet //url: 'delete/projet',

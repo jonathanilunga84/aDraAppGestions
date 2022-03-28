@@ -62,6 +62,9 @@
                             </div>
                         </div>
                     </div -->
+                    <div class="Mcol-sm-2 btn-dangerM float-right">
+                        <button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2M mt-2M" data-toggle="modal" data-target="#modal-AjoutPieceJointe">Ajout des piéce jointe</button>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
@@ -148,6 +151,19 @@
                         <div class="col-sm-12 mt-2">
                             <p class="card-text" style="font-weight: bold">Liste des congé de l'agent: <strong><a href="{{route('admin.agents.post.listeCongeAgent',[$postInfosAgent->id])}}" title="click pour voir la liste des staff pour le projet">voir plus</a></strong></p>
                         </div>  
+                        <div class="col-sm-12 mt-2 bg-successM">
+                            <p class="card-text" style="font-weight: bold">Documents</p>                            
+                            <ul>
+                                @forelse($postInfosAgent->piecejointe as $pieceJointe)
+                                    <li class="row bg-dangerM"> 
+                                        <a href="{{asset('storage/'.$pieceJointe->documentsAgnet)}}" target="_blank" class="col-sm-8 bg-infoM">document / {{$pieceJointe->nomPiecejointe}}
+                                        <span><a href="{{route('admin.agents.deletetDocument.delete',[$pieceJointe->id])}}" id="{{$pieceJointe->id}}" class="col-sm-2 bg-infoM linkDocSup">supprimer</a></span>
+                                    </li>
+                                @empty
+                                    <p class="card-text" style="font-weight: bold">Aucun Documents</p>
+                                @endforelse
+                            </ul> 
+                        </div>  
                     </div>                
                 </div>
                 <!-- /.card-body -->
@@ -155,120 +171,44 @@
             <!-- /.card -->
         </div>
 
-        <!-- Modal AjoutProjet-->
-        <div class="modal fade" id="modal-AjoutProjet" tabindex="-1" data-backdrop="static">
-            <div class="modal-dialog modal-AjoutProjet">
+        <!-- Modal Ajout piéce jointe -->
+        <div class="modal fade" id="modal-AjoutPieceJointe" tabindex="-1" data-backdrop="static">
+            <div class="modal-dialog modal-AjoutPieceJointe">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h6 class="modal-title">Formulaire Ajout projet</h6>
+                        <h6 class="modal-title">Formulaire d'enregistrement piéce jointe</h6>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form id="formAjoutProjet" action="{{route('admin.projets.projet.store')}}" method="POST">
+                    <form id="formAjoutDocument" action="{{route('admin.agents.AjoutDocument.store',[$postInfosAgent->id])}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <!-- label for="numeroProjet">Numéro du Projet</label -->
-                            <input type="hidden" name="numeroProjet" class="form-control" id="numeroProjet" value="000000" placeholder="Entrez Numéro du projet" aria-invalid="false">
-                            <span class="text-danger error-text numeroProjet_error"></span>
-                        </div> 
-                        <div class="form-group">
-                            <label for="intituleProjet">Intitulé du projet</label>
-                            <input type="text" name="intituleProjet" class="form-control" id="intituleProjet" placeholder="Entrez Intitulé du projet" aria-invalid="false">
-                            <span class="text-danger error-text intituleProjet_error"></span>
-                        </div> 
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="dateProjet">Date du projet</label>
-                                    <input type="date" name="dateProjet" class="form-control" id="dateProjet" placeholder="Entrez du projet" aria-invalid="false">
-                                    <span class="text-danger error-text dateProjet_error"></span>
-                                </div> 
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="dateFinProjet">Date fin projet</label>
-                                    <input type="date" name="dateFinProjet" class="form-control" id="dateFinProjet" placeholder="Entrez date fin projet" aria-invalid="false">
-                                    <span class="text-danger error-text dateFinProjet_error"></span>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="file" name="docPieceJointe" id="docPieceJointe"/>
+                                        <span class="text-danger error-text numeroProjet_error"></span>
+                                    </div> 
+                                    <div class="form-group">
+                                        <input type="text" name="nomPiece" class="form-control" placeholder="Ajouter un pour votre piéce jointe" required />
+                                    </div> 
+                                    <!-- div class="form-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="docPieceJointe[]" id="docPieceJointe" class="custom-file-input" multiple>
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                    </div -->
+                                    <div class="form-group">
+                                        <button id="btnAjoutDocument" type="submit" class="btn text-light btnAdra btnAdraActive form-control">Enregistrer</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>               
-                        <div class="form-group">
-                            <label for="lieuProjet">Lieu(s) du projet</label>
-                            <input type="text" name="lieuProjet" class="form-control" id="lieuProjet" placeholder="Entrez lieu du projet" aria-invalid="false">
-                            <span class="text-danger error-text lieuProjet_error"></span>
-                        </div>                       
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                        <button id="btnSendProjet" type="submit" class="btn btn-primary">Enregister</button>
-                    </div>
+                            </div> 
+                        </div>
                     </form>
                 </div>
-                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
         </div>
-        <!-- /End Modal AjoutProjet -->
-
-        <!-- Modal ModifPojet-->
-        <div class="modal fade" id="modal-ModifProjet" tabindex="-1" data-backdrop="static">
-            <div class="modal-dialog modal-ModifProjet">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h6 class="modal-title">Formulaire modification projet</h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form id="formModifProjet" action="{{route('admin.projets.projet.update')}}" method="POST">
-                        @csrf
-                        @method('PUT')
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input type="text" name="IdModif" id="IdModif" />
-                            <!-- label for="numeroProjet">Numéro du Projet</label -->
-                            <input type="hidden" name="numeroProjetM" class="form-control" id="numeroProjetM" value="000000" placeholder="Entrez Numéro du projet" aria-invalid="false">
-                            <span class="text-danger error-text numeroProjet_error"></span>
-                        </div> 
-                        <div class="form-group">
-                            <label for="intituleProjet">Intitulé du projet</label>
-                            <input type="text" name="intituleProjetModif" class="form-control" id="intituleProjetModif" placeholder="Entrez Intitulé du projet" aria-invalid="false">
-                            <span class="text-danger error-text intituleProjetModif_error"></span>
-                        </div> 
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="dateProjet">Date du projet</label>
-                                    <input type="date" name="dateProjetModif" class="form-control" id="dateProjetModif" placeholder="Entrez du projet" aria-invalid="false">
-                                    <span class="text-danger error-text dateProjetModif_error"></span>
-                                </div> 
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="dateFinProjet">Date fin projet</label>
-                                    <input type="date" name="dateFinProjetModif" class="form-control" id="dateFinProjetModif" placeholder="Entrez date fin projet" aria-invalid="false">
-                                    <span class="text-danger error-text dateFinProjetModif_error"></span>
-                                </div>
-                            </div>
-                        </div>               
-                        <div class="form-group">
-                            <label for="lieuProjet">Lieu(s) du projet</label>
-                            <input type="text" name="lieuProjetModif" class="form-control" id="lieuProjetModif" placeholder="Entrez lieu du projet" aria-invalid="false">
-                            <span class="text-danger error-text lieuProjetModif_error"></span>
-                        </div>                       
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                        <button id="btnSendModifProjet" type="submit" class="btn btn-primary">Enregister</button>
-                    </div>
-                    </form>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /End Modal ModifPojet-->
+        <!-- /End Modal Ajout piéce jointe -->
     </div>
 @endsection

@@ -174,7 +174,7 @@
                                     <label for="etatCivil">Etat Civil</label>
                                     <select class="form-control" name="etatCivil" id="etatCivil">
                                         <option value="celibataire">Célibataire</option>
-                                        <option value="marie">Marie</option>
+                                        <option value="marié(e)">Marié(e)</option>
                                     </select>
                                     <span class="text-danger error-text etatCivil_error"></span>
                                 </div>
@@ -277,7 +277,7 @@
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
-                                    <label for="dateDebut">Date debut</label>
+                                    <label for="dateDebut">Date début</label>
                                     <input type="date" name="dateDebut" class="form-control" id="dateDebut" placeholder="Entrez date debut" aria-invalid="false">
                                     <span class="text-danger error-text dateDebut_error"></span>
                                 </div> 
@@ -317,7 +317,7 @@
                                     <label for="status">Observation</label>
                                     <select class="form-control" name="status" id="status">
                                         <option value="en cours">EN COURS</option>
-                                        <option value="en cours sn">EN COURS SN</option>
+                                        <!-- option value="en cours sn">EN COURS SN</option -->
                                         <option value="demission">DEMISSION</option>
                                         <option value="deces">DECES</option>
                                         <option value="resiliation">RESILIATION</option>
@@ -344,9 +344,9 @@
                                 <div class="form-group">
                                     <label for="salaires">Devise</label>
                                     <select class="form-control" name="devise" id="devise">
-                                        <option>Franc</option>
-                                        <option>US</option>
-                                        <option>Euro</option>
+                                        <!-- option>Franc</option -->
+                                        <option value="USD">USD</option>
+                                        <!-- option>Euro</option -->
                                     </select>
                                     <span class="text-danger error-text devise_error"></span>
                                 </div> 
@@ -589,9 +589,9 @@
                                 <div class="form-group">
                                     <label for="deviseModif">Devise</label>
                                     <select class="form-control" name="deviseModif" id="salairesModif">
-                                        <option>Franc</option>
-                                        <option>US</option>
-                                        <option>Euro</option>
+                                        <!-- option>Franc</option -->
+                                        <option value="USD">USD</option>
+                                        <!-- option>Euro</option -->
                                     </select>
                                     <span class="text-danger error-text deviseModif_error"></span>
                                 </div> 
@@ -657,7 +657,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="totalJourPrevueConge">Total jours prevue</label>
+                                    <label for="totalJourPrevueConge">Total jours prevus</label>
                                     <input type="text" name="totalJourPrevueConge" class="form-control" id="totalJourPrevueConge" placeholder="Total jours prevue pour le congé" aria-invalid="false" title="Total jours prevue pour le congé">
                                     <span class="text-danger error-text totalJourPrevueConge_error"></span>
                                 </div>

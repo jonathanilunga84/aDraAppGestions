@@ -57,4 +57,9 @@ class Agent extends Model
         return $this->belongsTo(Projet::class);
         /*return $this->hasMany(Projet::class);*/
     }
+
+    public function piecejointe()
+    {
+        return $this->hasMany(Piecejointe::class);
+    }
 }

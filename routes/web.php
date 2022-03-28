@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminProjet\ProjetController;
 use App\Http\Controllers\AdminAgent\AgentController;
 use App\Http\Controllers\AdminConge\CongeController;
+use App\Http\Controllers\PieceJointeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,6 +70,10 @@ Route::group([
             /* cette Route permet d'imprimer une liste de tout le congé pour un Agent */
             Route::get('/liste/conge/un-agent/pdf/{id}', [AgentController::class, "listeCongeOneAgentPdf"])->name('post.listeCongeOneAgentPdf');
 
+            /* Route pour enregistrer les document ou dossiers d'un agent */
+            Route::post('/ajout/document/{id}', [PieceJointeController::class, "store"])->name('AjoutDocument.store');
+            /* Route pour supprimer les ocument ou dossiers d'un agent */
+        Route::get('/delete/document/{id}', [PieceJointeController::class, "delete"])->name('deletetDocument.delete');
         });
 
         Route::group([

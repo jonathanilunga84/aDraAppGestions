@@ -64,3 +64,9 @@ form .form-control.error{border: 1px solid red;}
 .main-footer a{
 	color: rgb(0, 121, 98);
 }
+
+/* ==== ====== */
+/*.btnAdraActive:active {
+    color: red;
+    background-color: rgb(0, 121, 98);
+}*/
