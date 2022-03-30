@@ -63,7 +63,7 @@
                         </div>
                     </div -->
                     <div class="Mcol-sm-2 btn-dangerM float-right">
-                        <button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2M mt-2M" data-toggle="modal" data-target="#modal-AjoutPieceJointe">Ajout des piéce jointe</button>
+                        <button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2M mt-2M" data-toggle="modal" data-target="#modal-AjoutPieceJointe">Ajout des piéces jointes</button>
                     </div>
                 </div>
                 <!-- /.card-header -->

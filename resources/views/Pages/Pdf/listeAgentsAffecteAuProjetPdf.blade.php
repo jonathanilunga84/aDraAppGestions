@@ -1,7 +1,7 @@
 @extends('layouts.LayoutPdf')
 
 @section('content')
-	<h3>Liste Staff affectée au projet en cours</h3>
+	<h3>Liste Staffs affectés au projet en cours</h3>
 	<p>Projet: 
 		{{$listeAgentsAffecteAuProjet->intituleProjet}} <br />
 		{{ Carbon\Carbon::parse($listeAgentsAffecteAuProjet->dateProjet)->format('d-m-Y') }} au

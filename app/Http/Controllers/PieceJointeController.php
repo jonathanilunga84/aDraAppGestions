@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Agent;
-use App\Models\PieceJointe;
+use App\Models\Piecejointe;
 use Illuminate\Support\Facades\Storage;
 use Session;
 
@@ -49,7 +49,7 @@ class PieceJointeController extends Controller
                 $extension = $documents->getClientOriginalExtension();
                 $filename = $nomPiecejointe .''. time().'.'.$extension;//$request->file('docPieceJointe');
                 $documents->storeAs('public/documentsAgents', $filename);
-                PieceJointe::create([
+                Piecejointe::create([
                     'agent_id' => $id,
                     'nomPiecejointe' => $nomPiecejointe,
                     'documentsAgnet'=>'documentsAgents/'.$filename

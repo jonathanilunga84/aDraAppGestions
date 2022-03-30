@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-5 bg-primaryM">
                     <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">Impression liste projet encours</button -->
-                    <a href="{{route('admin.conges.post.listeStaffCongeEnCoursPdf')}}" target="_blank" class="btn btn-block mt-2 btnAdra text-light mb-2 mt-2"><i class="fas fa-print"></i> Impression liste projet en cours</a>
+                    <a href="{{route('admin.conges.post.listeStaffCongeEnCoursPdf')}}" target="_blank" class="btn btn-block mt-2 btnAdra text-light mb-2 mt-2"><i class="fas fa-print"></i> Impression listes congés cours</a>
                 </div>
             </div>   
         </div>

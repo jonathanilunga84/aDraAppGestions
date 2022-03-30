@@ -42,7 +42,7 @@
                     <a href="{{route('admin.projets.listes.index')}}" class="btn btn-block mt-2" title="actualiser la page"><i class="fas fa-sync"></i></a>
                 </div -->
                 <div class="col-sm-3">
-                    <a href="{{route('admin.agents.post.listeCongeOneAgentPdf',[$IdAgent])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2">Imprimer le congé Agent</a>
+                    <a href="{{route('admin.agents.post.listeCongeOneAgentPdf',[$IdAgent])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2">Imprimer les congés Agent</a>
                 </div>
             </div>   
         </div>
@@ -88,7 +88,7 @@
                                     <tr>
                                         <!-- td>{{$item->numeroProjet}}</td -->
                                         <td>{{$item->circonstanceConge}}</td>
-                                        <td>{{$item->dureeConge}}</td>
+                                        <td>{{$item->totalJourPrevueConge}}</td>
                                         <td>{{ Carbon\Carbon::parse($item->dateDepart)->format('d-m-Y') }}</td>
                                         <td>{{ Carbon\Carbon::parse($item->dateRetour)->format('d-m-Y') }}</td>
                                         <td>{{$item->statusConge}}</td>
