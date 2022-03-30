@@ -258,6 +258,7 @@ class AgentController extends Controller
     }
 
     public function searchAgentParIdentite(Request $request){
+        //dd($request->AgentSearch);
         $req = $request->AgentSearch;
         $dateDebut = $request->dateDebuts;
         $dateFinPrevues = $request->dateFinPrevues;
@@ -301,10 +302,11 @@ class AgentController extends Controller
         $id = $request->id;
         $getInfosAgent = Agent::findOrfail($id);
         $projet = $getInfosAgent->projet;
+        //print_r("rrrr-->".$projet);
         return response()->json([
             'getInfosAgent'=>$getInfosAgent,
             'projetAgent'=>$projet
-        ]);  
+        ]);
     }
 
     public function listeCongeAgent($id){

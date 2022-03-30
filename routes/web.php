@@ -46,6 +46,9 @@ Route::group([
 
             /* cette route permet d'imprimer une liste des Agents lié à un projet' */
             Route::get('/liste/staff/affecter-au-projet/pdf/{id}', [ProjetController::class, "listeAgentsAffecteAuProjetPdf"])->name('post.listeAgentsAffecteAuProjetPdf');
+
+            /*  Route pour modifier le status(Observaton) Projet  */
+            Route::get('/update/status/projet/{id}', [ProjetController::class, "updateStatusProjet"])->name('updateStatusProjet');
         });
 
         Route::group([
@@ -56,8 +59,8 @@ Route::group([
             //cette Route permet d'afficher les infos d'un seul agent
             Route::get('/post/agent/{id}', [AgentController::class, "show"])->name('AgentPost.show');
             //cette Route permet faire une recherche par nom,postnom,prenom
-            Route::post('/search/agent/', [AgentController::class, "searchAgentParIdentite"])->name('searchAgentParIdentite');
-            Route::post('/search/agent/date', [AgentController::class, "searchAgentParDate"])->name('searchAgentParDate');
+            Route::get('/search/agent/', [AgentController::class, "searchAgentParIdentite"])->name('searchAgentParIdentite');
+            Route::get('/search/agent/date', [AgentController::class, "searchAgentParDate"])->name('searchAgentParDate');
 
             Route::get('/listes/agent/ajax', [AgentController::class, "getAgentsAjax"])->name('listesAgents.getAgentsAjax');
             Route::get('/infos/agent/ajax', [AgentController::class, "showInfoAgent"])->name('getInfosAgent.showInfoAgent');
@@ -93,6 +96,10 @@ Route::group([
 
             /* cette Route permet d'imprimer les congé en cours */
             Route::get('/liste/conge/staff/en-cours/pdf/', [CongeController::class, "listeStaffCongeEnCoursPdf"])->name('post.listeStaffCongeEnCoursPdf');
+
+            /* Route pour modifier le status(Observaton) congé */
+            Route::get('/update/status/conge/{id}', [CongeController::class, "updateStatusConge"])->name('updateStatusConge');
+
         });
     }
 );

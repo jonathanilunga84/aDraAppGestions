@@ -154,6 +154,23 @@ class ProjetController extends Controller
         Projet::destroy($Id);
     }
 
+    public function updateStatusProjet($id){
+        $infosOneProjet = Projet::findOrfail($id);
+        if ($infosOneProjet->status == "encours" || $infosOneProjet->status == "en cours" ) {
+            //print_r($infosConge->statusConge);
+            $infosOneProjet->update([
+                'status' => 'terminé'
+            ]);
+        }
+        else{
+            //print_r("terminé");
+            $infosOneProjet->update([
+                'status' => 'en cours'
+            ]);
+        }
+        //print_r($infosOneProjet);
+    }
+
     public function searchProjet(Request $request)
     {
         $req = $request->intituleProjetSearch;

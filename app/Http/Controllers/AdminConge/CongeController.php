@@ -145,6 +145,23 @@ class CongeController extends Controller
         $infosConge->delete($infosConge);
     }
 
+    public function updateStatusConge($id){
+
+        $infosConge = Conge::findOrfail($id);
+        if ($infosConge->statusConge == "encours" || $infosConge->statusConge == "en cours" ) {
+            //print_r($infosConge->statusConge);
+            $infosConge->update([
+                'statusConge' => 'terminé'
+            ]);
+        }
+        else{
+            //print_r("terminé");
+            $infosConge->update([
+                'statusConge' => 'en cours'
+            ]);
+        }        
+    }
+
     public function searchConge(Request $request)
     {
         $req = $request->searchCongeVal;

@@ -27,10 +27,10 @@
                 <div class="col-sm-4 btn-dangerM mt-2">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form action="{{route('admin.agents.searchAgentParIdentite')}}" method="POST">
-                                @csrf
+                            <form action="{{route('admin.agents.searchAgentParIdentite')}}" method="get">
+                                {{-- @csrf --}}
                                 <div class="input-group input-group-sm btn-dangerM mt-2M" style="widthM: 500px;">
-                                    <input type="text" name="AgentSearch" id="AgentSearch" class="form-control float-right" placeholder="nom ou postnom ou prenom agent ou Fonction" />
+                                    <input type="text" name="AgentSearch" id="AgentSearch" class="form-control float-right" placeholder="nom ou postnom ou prenom agent ou Fonction" value="{{request()->AgentSearch ?? '' }}" />
                                     <div class="input-group-append btn-dangerM">
                                         <button type="submit" class="btn btn-default">
                                         <i class="fas fa-search"></i>
@@ -41,12 +41,12 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{route('admin.agents.searchAgentParDate')}}" method="POST" class="bg-dangerM">
-                    @csrf
+                <form action="{{route('admin.agents.searchAgentParDate')}}" method="get" class="bg-dangerM">
+                    {{-- @csrf --}}
                     <div class="col-sm-5 d-flex mb-3 mt-2">
                         
-                            <input type="date" name="dateDebuts" class="mr-1" title="recherche par date debut" />
-                            <input type="date" name="dateFinPrevues" class="mr-1" title="et recheche par date fin" />
+                            <input type="date" name="dateDebuts" class="mr-1" title="recherche par date debut" value="{{request()->dateDebuts ?? '' }}" />
+                            <input type="date" name="dateFinPrevues" class="mr-1" title="et recheche par date fin" value="{{request()->dateFinPrevues ?? '' }}" />
                             <button type="submit" class="btn btn-default">
                                 <i class="fas fa-search"></i>
                             </button>   
@@ -106,7 +106,7 @@
                                 <td>{{ Carbon\Carbon::parse($item->dateFinPrevue)->format('d-m-Y') }}</td>
                                 <td>
                                     <a id="{{$item->id}}" href="{{route('admin.agents.AgentPost.show',[$item->id])}}" class="btn btn-success btnVueGlobalAgent" title="Vue globale sur le Agent"><i class="far fa-eye"></i></a>
-                                    <a id="{{$item->id}}" href="#" class="btn btn-primary btnModifAgent btnModifAgentGetInfos" data-toggle="modal" data-target="#modal-ModifAgent"><i class="far fa-edit"></i></a>
+                                    <a id="{{$item->id}}" href="{{route('admin.agents.getInfosAgent.showInfoAgent')}}" class="btn btn-primary btnModifAgent btnModifAgentGetInfos" data-toggle="modal" data-target="#modal-ModifAgent"><i class="far fa-edit"></i></a>
                                     <a id="{{$item->id}}" href="#" data-toggle="modal" class="btn btn-danger show_confirm_Delete_URLM showf btnDeleteAgent"><i class="far fa-trash-alt"></i></a>
                                     <a id="{{$item->id}}"  href="{{route('admin.agents.getInfosAgent.showInfoAgent',[$item->id])}}" data-toggle="modal" data-target="#modal-AjoutConge" class="btn btn-info btnAjoutCongeAgent"><i class="fa fa-assistive-listening-systems"></i> CONGE</i></a>
                                 </td>
@@ -317,16 +317,15 @@
                                     <label for="status">Observation</label>
                                     <select class="form-control" name="status" id="status">
                                         <option value="en cours">EN COURS</option>
-                                        <!-- option value="en cours sn">EN COURS SN</option -->
-                                        <option value="demission">DEMISSION</option>
-                                        <option value="deces">DECES</option>
-                                        <option value="resiliation">RESILIATION</option>
-                                        <option value="expiration">EXPIRATION</option>
-                                        <option value="absent">ABSENT</option>
-                                        <option value="tache additionnelle">TACHE ADDITIONNELLE</option>
-                                        <option value="nouvelle affectation">NOUVELLE AFFECTATION</option>
-                                        <option value="mise en disponibilite">MISE EN DISPONIBILITE</option>
-                                        <option value="suspension">SUSPENSION</option>
+                                        <option value="Mise en disponibilité">MISE EN DISPONIBILITE</option>
+                                        <option value="Démission">DEMISSION</option>
+                                        <option value="Résiliation">RESILIATION</option>
+                                        <option value="Expiration">EXPIRATION</option>
+                                        <option value="Tache additionnelles">TACHE ADDITIONNELLES</option>
+                                        <option value="Nouvelle affectation">NOUVELLE AFFECTATION</option>
+                                        <option value="Suspension">SUSPENSION</option>
+                                        <option value="Indisponible">INDISPONIBLE</option>
+                                        <option value="deces">DECES</option>                                     
                                     </select>
                                     <span class="text-danger error-text status_error"></span>
                                 </div>  
@@ -562,16 +561,15 @@
                                     <label for="status">Observation</label>
                                     <select class="form-control" name="statusModif" id="statusModif">
                                         <option value="en cours">EN COURS</option>
-                                        <option value="en cours sn">EN COURS SN</option>
-                                        <option value="demission">DEMISSION</option>
-                                        <option value="deces">DECES</option>
-                                        <option value="resiliation">RESILIATION</option>
-                                        <option value="expiration">EXPIRATION</option>
-                                        <option value="absent">ABSENT</option>
-                                        <option value="tache additionnelle">TACHE ADDITIONNELLE</option>
-                                        <option value="nouvelle affectation">NOUVELLE AFFECTATION</option>
-                                        <option value="mise en disponibilite">MISE EN DISPONIBILITE</option>
-                                        <option value="suspension">SUSPENSION</option>
+                                        <option value="Mise en disponibilité">MISE EN DISPONIBILITE</option>
+                                        <option value="Démission">DEMISSION</option>
+                                        <option value="Résiliation">RESILIATION</option>
+                                        <option value="Expiration">EXPIRATION</option>
+                                        <option value="Tache additionnelles">TACHE ADDITIONNELLES</option>
+                                        <option value="Nouvelle affectation">NOUVELLE AFFECTATION</option>
+                                        <option value="Suspension">SUSPENSION</option>
+                                        <option value="Indisponible">INDISPONIBLE</option>
+                                        <option value="deces">DECES</option> 
                                     </select>
                                     <span class="text-danger error-text statusModif_error"></span>
                                 </div>  

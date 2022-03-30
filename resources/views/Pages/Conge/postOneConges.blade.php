@@ -100,7 +100,7 @@
                             <p class="card-text">Date Retour: <strong>{{ Carbon\Carbon::parse($postInfosConge->dateRetour)->format('d-m-Y') }}</strong></p>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <p class="card-text">Observation Congé: <strong>{{$postInfosConge->statusConge}}</strong></p>
+                            <p class="card-text">Observation Congé: <strong>{{$postInfosConge->statusConge}}</strong> <span class="ml-3"><a href="{{route('admin.conges.updateStatusConge',[$postInfosConge->id])}}" class="linkBtnModifStatusConge">modification</a></span></p>
                         </div>
                         <div class="col-sm-12 mt-2 mb-2 btnAdra">
                             @if(! empty($postInfosConge->projet->intituleProjet))

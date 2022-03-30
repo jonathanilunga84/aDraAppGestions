@@ -261,9 +261,10 @@
 	$('.btnModifAgentGetInfos').on('click', function(event){
 		event.preventDefault();
 		let getId = $(this).attr('id');
-		console.log(getId);
+		let myUrl = $(this).attr('href'); //'infos/agent/ajax'
+		//console.log(myUrl+"--"+getId);
 		$.ajax({
-			url: 'infos/agent/ajax',
+			url: myUrl,
 			method: 'GET',
 			data: {
 				id: getId,
@@ -271,6 +272,7 @@
 			},
 			success: function(response) {
 				//console.log(response.projetAgent.intituleProjet);
+				//console.log(response);
 				$("#IdAgentModif").val(response.getInfosAgent.id);
 				$("#nomModif").val(response.getInfosAgent.nom);
 				$("#postnomModif").val(response.getInfosAgent.postnom);
@@ -295,7 +297,11 @@
 				$("#DureeContratJourModif").val(response.getInfosAgent.DureeContratJour);
 				$("#statusModif").val(response.getInfosAgent.status);
 				$("#salairesModif").val(response.getInfosAgent.salaires);
-			}
+			},/*,
+			error:function(error){
+		       	console.log(error.responseText);
+		       	alert('Error sur le serveur 500');
+		    }*/
 		});
 	});/* /End request Get InfosAgent */
 

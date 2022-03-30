@@ -79,7 +79,7 @@
                             <p class="card-text">Lieu exécution Projet : <strong>{{$postProjets->lieuProjet}}</strong></p>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <p class="card-text">Status Projet : <strong>{{$postProjets->status}}</strong></p>
+                            <p class="card-text">Status Projet : <strong>{{$postProjets->status}}</strong> <span class="ml-3"><a href="{{route('admin.projets.updateStatusProjet',[$postProjets->id])}}" class="linkBtnModifStatusProjet">modification</a></span></p>
                         </div>
                         <div class="col-sm-12 mt-2">
                             <p class="card-text" style="font-weight: bold">Liste des staffs affectés au projet: <strong><a href="{{route('admin.projets.post.listeAgentsAffecteAuProjet',[$postProjets->id])}}" title="click pour voir la liste des staff pour le projet">voir plus</a></strong></p>
