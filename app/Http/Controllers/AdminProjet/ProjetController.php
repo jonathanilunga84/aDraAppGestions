@@ -209,8 +209,8 @@ class ProjetController extends Controller
         //return $pdf->stream();
         //dd("imprimerpdf");
         return PDF::loadView('Pages/Pdf/listeAgentsAffecteAuProjetPdf', compact('listeAgentsAffecteAuProjet'))
-                    //->setPaper('a4', 'landscape')
-                    ->setPaper('a4')
+                    ->setPaper('a4', 'landscape')
+                    //->setPaper('a4')
                     ->setWarnings(false)
                     ->stream();
         //return view('Pages/Pdf/listeAgentsAffecteAuProjetPdf', compact("listeAgentsAffecteAuProjet"));

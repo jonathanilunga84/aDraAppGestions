@@ -82,7 +82,9 @@
                                         <th>Postnom</th>
                                         <th>Prenom</th>
                                         <th>Sexe</th>
-                                        <th>fonction</th>
+                                        <th>Fonction</th>
+                                        <th>Date début</th>
+                                        <th>Date fin</th>
                                     </tr>
                                 </thead>
                                 <!-- div id="show_all_projets_Search"></div -->
@@ -96,6 +98,8 @@
                                         <td>{{$item->prenom}}</td>
                                         <td>{{$item->sexe}}</td>
                                         <td>{{$item->fonction}}</td>
+                                        <td>{{ Carbon\Carbon::parse($item->dateDebut)->format('d-m-Y') }}</td>  
+                                        <td>{{ Carbon\Carbon::parse($item->dateFinPrevue)->format('d-m-Y') }}</td>
                                     </tr>
                                     @empty
                                         <h4 class="text-center bg-danger">Pas de Staff pour ce projet</h4>
