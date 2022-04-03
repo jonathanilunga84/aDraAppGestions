@@ -69,7 +69,12 @@
                     <div class="row">
                         <div class="col-sm-12 bg-dangerM">
                             <h3 class="card-title">Liste des Staffs</h3>
-                            <span class="btnAdraM float-right text-lightM font-weight-bold">Total Staffs: {{$listesAgents->total()}}</span>
+                            <span class="btnAdraM float-right text-lightM font-weight-bold"> 
+                                @if(isset($myPaginateExist))
+                                    Total Staffs:
+                                    {{$listesAgents->total()}}
+                                @endif
+                            </span>
                         </div>
                     </div>
                     <div class="card-tools">

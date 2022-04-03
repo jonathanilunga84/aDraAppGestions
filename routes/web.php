@@ -38,7 +38,7 @@ Route::group([
             Route::get('/listes/projet/ajax', [ProjetController::class, "fectchAllProjetAjax"])->name('listesProjets.fectchAllProjetAjax');
             Route::get('/infos/projet/ajax', [ProjetController::class, "fectchOneProjetAjax"])->name('fectchOneProjetAjax');
             Route::post('/ajout/projet', [ProjetController::class, "store"])->name('projet.store');
-            Route::post('/search/projet', [ProjetController::class, "searchProjet"])->name('searchProjet');
+            Route::get('/search/projet', [ProjetController::class, "searchProjet"])->name('searchProjet');
             Route::post('/delete/projet', [ProjetController::class, "delete"])->name('projet.delete');
             Route::put('/update/projet', [ProjetController::class, "update"])->name('projet.update');
             Route::get('/post/projet/{id}', [ProjetController::class, "show"])->name('post.show');
@@ -88,8 +88,13 @@ Route::group([
             /* Route pour affichér les infos pour une congé*/
             Route::get('/post/conge/{id}', [CongeController::class, "show"])->name('postConge.show');
             Route::post('/ajout/conge/agent', [CongeController::class, "store"])->name('Conge.store');
+
             //cette Route permet de rechercher le congé
-            Route::post('/search/conge', [CongeController::class, "searchConge"])->name('searchConge');
+            Route::get('/search/conge', [CongeController::class, "searchConge"])->name('searchConge');
+
+            //cette Route permet de rechercher le congé par nom ou postnom ou prenom Agent(staff)
+            Route::get('/search/conge/agent', [CongeController::class, "searchCongeParAgent"])->name('searchCongeParAgent');
+
             /* Route pour supprimer un Congé */
             Route::get('/delete/conge', [CongeController::class, "delete"])->name('conge.delete');
             Route::get('/liste/staff/affecter-au-conge/{id}', [CongeController::class, "listeAgentsAffecteAuConge"])->name('post.listeAgentsAffecteAuConge');
@@ -100,6 +105,11 @@ Route::group([
             /* Route pour modifier le status(Observaton) congé */
             Route::get('/update/status/conge/{id}', [CongeController::class, "updateStatusConge"])->name('updateStatusConge');
 
+            /* Route pour afficher le formulaire de modification congé */
+            Route::get('/form/edit/conge/{id}', [CongeController::class, "edit"])->name('EditFormConge');
+
+            /* Route pour valider(enregistrer) le modifier de congé */
+            Route::post('/update/conge/{id}', [CongeController::class, "update"])->name('updateConge');
         });
     }
 );

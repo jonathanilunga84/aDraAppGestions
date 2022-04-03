@@ -26,10 +26,10 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-sm-8"> 
-                    <form action="{{route('admin.projets.searchProjet')}}" method="POST">
-                    @csrf
+                    <form action="{{route('admin.projets.searchProjet')}}" method="get">
+                    {{-- @csrf --}}
                     <div class="input-group input-group-sm btn-dangerM mt-2" style="widthM: 500px;">
-                        <input type="text" name="intituleProjetSearch" id="intituleProjetSearch" class="form-control float-right" placeholder="Entrez nom projet" />
+                        <input type="text" name="intituleProjetSearch" id="intituleProjetSearch" class="form-control float-right" placeholder="Entrez nom projet" value="{{request()->intituleProjetSearch ?? '' }}" />
                         <div class="input-group-append btn-dangerM">
                             <button type="submit" class="btn btn-default">
                             <i class="fas fa-search"></i>

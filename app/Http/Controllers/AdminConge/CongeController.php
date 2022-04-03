@@ -112,7 +112,9 @@ class CongeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $postEditConge = Conge::findOrfail($id);
+        //dd($postEditConge);
+        return view("Pages.Conge.EditConge", compact('postEditConge'));
     }
 
     /**
@@ -124,7 +126,33 @@ class CongeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $validator = validator::make($request->all(),[
+            'totalJourPrevueConge'=>'max:100',
+            'congeDejaPris'=>'max:100',
+            'nbrJrD'=>'max:100',
+            'nbrJourR'=>'max:100',
+            'explicationConge'=>'max:100',
+            'dateDepart'=>'max:15',
+            'dateRetour'=>'max:15', 
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['status'=>0, 'error'=>$validator->messages()]);
+        }
+        else{
+            $data = [
+                "totalJourPrevueConge" => $request->totalJourPrevueConge,
+                "congeDejaPris" => $request->congeDejaPris,
+                "nbrJrD" => $request->nbrJrD,
+                "nbrJourR" => $request->nbrJourR,
+                "explicationConge" => $request->explicationConge,
+                "dateDepart" => $request->dateDepart,
+                "dateRetour" => $request->dateRetour,
+            ];
+            //print_r($data);
+            $infosConge = Conge::findOrfail($id);
+            $infosConge->update($data);
+            return response()->json(['status'=>1, 'messageSucces'=>'Modification Congé effectué avec success']);
+        }
     }
 
     /**
@@ -142,7 +170,7 @@ class CongeController extends Controller
     {
         $Id = $request->Id;
         $infosConge = Conge::findOrfail($Id);
-        $infosConge->delete($infosConge);
+        $infosConge->delete($Id);
     }
 
     public function updateStatusConge($id){
@@ -165,10 +193,39 @@ class CongeController extends Controller
     public function searchConge(Request $request)
     {
         $req = $request->searchCongeVal;
-        $listesConge = Conge::where("circonstanceConge", 'like', '%'.$req.'%')
-                                ->get();
+        $reqStatus = $request->searchCongeStatus;
+        if (! empty($req) && empty($reqStatus)) {
+            $listesConge = Conge::where("circonstanceConge", 'like', '%'.$req.'%')
+                                    ->get();
+        }
+        else if(empty($req) && ! empty($reqStatus)){
+            $listesConge = Conge::where("statusConge", 'like', '%'.$reqStatus.'%')
+                                    ->get();
+        }else if(! empty($req) && ! empty($reqStatus)){
+             $listesConge = Conge::where("circonstanceConge", 'like', '%'.$req.'%')
+                                    ->where("statusConge", 'like', '%'.$reqStatus.'%')
+                                    ->get();
+        }
+        else{
+            return back();
+        }
+        /* $listesConge = Conge::where("circonstanceConge", 'like', '%'.$req.'%')
+                                ->orWhere("statusConge", 'like', '%'.$reqStatus.'%')
+                                ->Where("circonstanceConge", 'like', '%'.$req.'%')
+                                ->get(); */
         //dd($listesConge);
         return view('Pages.Conge.listesConges', compact('listesConge'));
+    }
+
+    //cette Route permet de rechercher le congé par nom ou postnom ou prenom Agent(staff)
+    public function searchCongeParAgent(Request $request){
+        $req = $request->searchCongeParNomAgent;
+        $listesResearchAgentsResult = Agent::where("nom", 'like', '%'.$req.'%')
+                                ->orWhere("postnom", 'like', '%'.$req.'%')
+                                ->orWhere("prenom", 'like', '%'.$req.'%')
+                                ->orWhere("fonction", 'like', '%'.$req.'%')
+                                ->get(); 
+        dd($listesResearchAgentsResult);
     }
 
     /* recuperation des agents lié au projet */

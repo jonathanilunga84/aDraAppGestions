@@ -70,3 +70,10 @@ form .form-control.error{border: 1px solid red;}
     color: red;
     background-color: rgb(0, 121, 98);
 }*/
+
+/*.btnActive:focus{
+    background-color: red;
+}*/
+.btnActive:disabled{
+    background-color: silver;
+}

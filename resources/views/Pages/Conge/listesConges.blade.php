@@ -25,34 +25,56 @@
 
         <div class="col-12">
             <div class="row">
-                <div class="col-4 btn-dangerM">
-                    <form action="{{route('admin.conges.searchConge')}}" method="POST">
-                    @csrf
+                <div class="col-8 btn-dangerM">
+                    <form action="{{route('admin.conges.searchConge')}}" method="get">
+                    {{-- @csrf --}}
                     <div class="row">
-                        <div class="col-12 bg-primaryM">
+                        <div class="col-sm-3 bg-primaryM">
                             <div class="input-group input-group-sm btn-dangerM mt-2 mb-2" style="widthM: 500px;">
-                        <!-- input type="text" name="AgentSearch" id="AgentSearch" class="form-control float-right" placeholder="Entrez nom ou postnom ou prenom agent" / -->
-                        <select id="searchCongeVal" name="searchCongeVal" class="form-control float-right">
-                            <option value="">---Select---</option>
-                            <option value="Congé Annuel">Congé Annuel</option>
-                            <option value="Congé de Circonstance">Congé de circonstance</option>
-                            <option value="CongéMaladie">Congé Maladie</option>
-                        </select>
-                        <div class="input-group-append btn-dangerM">
-                            <button type="submit" class="btn btn-default">
-                            <i class="fas fa-search"></i>
-                            </button>
+                                <!-- input type="text" name="AgentSearch" id="AgentSearch" class="form-control float-right" placeholder="Entrez nom ou postnom ou prenom agent" / -->
+                                <select id="searchCongeVal" name="searchCongeVal" class="form-control float-right">
+                                    <option value="{{request()->searchCongeVal ?? '' }}">{{request()->searchCongeVal ?? '---Select---' }}</option>
+                                    <option value="Congé Annuel">Congé Annuel</option>
+                                    <option value="Congé de Circonstance">Congé de circonstance</option>
+                                    <option value="Congé Maladie">Congé Maladie</option>
+                                </select>
+                                <!-- div class="input-group-append btn-dangerM">
+                                    <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                    </button>
+                                </div -->
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group col-sm-4 input-group-sm d-flex">
+                            <select id="searchCongeStatus" name="searchCongeStatus" class="form-control float-right mt-2 mb-2">
+                                <option value="{{request()->searchCongeStatus ?? '' }}">{{request()->searchCongeStatus ?? '---Select---' }}</option>
+                                <option value="en cours">En cours</option>
+                                <option value="terminé">Terminé</option>
+                            </select>
+                            <button type="submit" class="btn btn-default ml-2 mt-1">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </div>
                     </form>
                 </div>
-                <div class="col-3 bg-primaryM">
+                <div class="col-1 bg-primaryM">
                     <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">Ajout Projet</button -->
                     <a href="{{route('admin.conges.listesConge.index')}}" class="btn btn-block mt-2"><i class="fas fa-sync"></i></a>
                 </div>
-                <div class="col-5 bg-primaryM">
+                <!-- div class="col-sm-5 btn-dangerM">
+                    <form action="{{route('admin.conges.searchCongeParAgent')}}" method="get">
+                        <div class="input-group input-group-sm btn-dangerM mt-2">
+                            <input type="text" name="searchCongeParNomAgent" id="searchCongeParNomAgent" class="form-control float-right" placeholder="Rechercher par nom ou postnom ou prenom" value="{{request()->searchCongeParNomAgent ?? '' }}" />
+                            <div class="input-group-append btn-dangerM">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>  
+                </div -->
+                <div class="col-3 bg-primaryM">
                     <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">Impression liste projet encours</button -->
                     <a href="{{route('admin.conges.post.listeStaffCongeEnCoursPdf')}}" target="_blank" class="btn btn-block mt-2 btnAdra text-light mb-2 mt-2"><i class="fas fa-print"></i> Impression listes congés cours</a>
                 </div>
@@ -95,7 +117,7 @@
                             <tr> 
                                 <td>
                                 @if(! empty($item->agent->nom))
-                                    {{$item->agent->nom}} {{$item->agent->postnom}}
+                                    {{$item->agent->nom}} {{$item->agent->postnom}} {{$item->agent->prenom}}
                                 @else
                                     pas de nom trouvé
                                 @endif
@@ -108,7 +130,7 @@
                                 <td>@if(! empty($item->projet->intituleProjet)){{$item->projet->intituleProjet}}@else impossible de trouvé le Projet concerné @endif</td>
                                 <td>
                                     <a id="{{$item->id}}" href="{{route('admin.conges.postConge.show',[$item->id])}}" class="btn btn-success btnVueGlobalConge" title="Vue global Congé"><i class="far fa-eye"></i></a>
-                                    <!-- a href="" class="btn btn-primary" title="Modification"><i class="far fa-edit"></i></a --> 
+                                    <a href="{{route('admin.conges.EditFormConge',[$item->id])}}" class="btn btn-primary" title="Modification"><i class="far fa-edit"></i></a> 
                                     <a id="{{$item->id}}" href="#" class="btn btn-danger show_confirm_Delete_Conge_URL" title="supprimer"><i class="far fa-trash-alt"></i></a>
                                 </td>
                             </tr>
@@ -178,21 +200,5 @@
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
-
-
-          <!-- card a supprimer -->
-        <!-- div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title float-right">Card title</h5>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                    </p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>
-            </div>
-        </div -->
     </div>
 @endsection
