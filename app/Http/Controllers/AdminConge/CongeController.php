@@ -184,9 +184,10 @@ class CongeController extends Controller
                                         ->orWhere('statusConge',"encours")
                                         ->get();
         return PDF::loadView('Pages/Pdf/listeStaffCongeEnCoursPdf', compact('listeStaffCongeEnCours'))
+                    ->setPaper('a4', 'landscape')
                     ->stream();
 
         //dd($listeStaffCongeEnCours);
-        return view('Pages/Pdf/listeStaffCongeEnCoursPdf', compact('listeStaffCongeEnCours'));
+        //return view('Pages/Pdf/listeStaffCongeEnCoursPdf', compact('listeStaffCongeEnCours'));
     }
 }

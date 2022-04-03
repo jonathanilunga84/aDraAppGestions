@@ -1,7 +1,7 @@
 @extends('layouts.LayoutPdf')
 
 @section('content')
-	<h3>Liste des Staff Congé en cours</h3>
+	<h5>Liste des Staffs Congé en cours</h5>
 	<table class="table table-borderedM mb-5">
         <thead>
             <tr class="table-dangerM">
@@ -10,8 +10,11 @@
                 <th scope="col">Circonstance Congé</th>
                 <th scope="col">Projet</th>
                 <th scope="col">Durée Congé</th>
-                <th scope="col">Date Depart</th>
-                <th scope="col">Date Retour</th>
+                <th scope="col">Congé Deja Pris</th>
+                <th scope="col">Nbr Jour demandé</th>
+                <th scope="col">Nbr Jour Restant(s)</th>
+                <th scope="col">Date dernier Depart</th>
+                <th scope="col">Date dernier Retour</th>
                 <th scope="col">Observation</th>
             </tr>
         </thead>
@@ -19,16 +22,25 @@
         	@forelse($listeStaffCongeEnCours as $item)
             <tr>
                 <td>{{$loop->index + 1 }}</td>
-                <td>{{$item->agent->nom}}</td>
+                <td>
+                    @if(! empty($item->agent->prenom))
+                        {{$item->agent->nom}} {{$item->agent->postnom}}
+                    @else
+                        pas de nom trouvé
+                    @endif
+                </td>
                 <td>{{$item->circonstanceConge}}</td>
                 <td>{{$item->projet->intituleProjet}}</td>
-                <td>{{$item->dureeConge}}</td>
+                <td>{{$item->totalJourPrevueConge}}</td>
+                <td>{{$item->congeDejaPris}}</td>
+                <td>{{$item->nbrJrD}}</td>
+                <td>{{$item->nbrJourR}}</td>
                 <td>{{ Carbon\Carbon::parse($item->dateDepart)->format('d-m-Y') }}</td>
                 <td>{{ Carbon\Carbon::parse($item->dateRetour)->format('d-m-Y') }}</td>
                 <td>{{$item->statusConge}}</td>
             </tr>
             @empty
-            <h4 class="text-center bg-danger">Pas de congé pour</h4>
+            <h4 class="text-center bg-danger">Pas de congé</h4>
             @endforelse
         </tbody>
     </table>

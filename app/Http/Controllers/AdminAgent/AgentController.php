@@ -20,8 +20,10 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $listesAgents = Agent::all();
+        //$listesAgents = Agent::all();
+        $listesAgents = Agent::orderBy('id', 'DESC')->paginate(5);
         $listesProjets = Projet::all();
+        $myPaginateExist ="";
         //$alea = rand();
         //$datas = date('dy');
         //$mail = $alea.''.$datas.'@gmail.com';
@@ -30,8 +32,9 @@ class AgentController extends Controller
         //$temp = Now('date');
         //$datep = Carbon::now(); //$datep->toTimeString()
         //$dt = "N".rand(0,100); //$datep->toArray(['day'=>$datep->day]);
-        //dd($dt);
-        return view('Pages.Agents.listesAgents', compact('listesAgents','listesProjets'));
+        
+        //dd($listesAgents);
+        return view('Pages.Agents.listesAgents', compact('listesAgents','listesProjets','myPaginateExist'));
     }
 
     /**

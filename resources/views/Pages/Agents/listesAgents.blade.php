@@ -66,7 +66,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Liste des Staffs</h3>
+                    <div class="row">
+                        <div class="col-sm-12 bg-dangerM">
+                            <h3 class="card-title">Liste des Staffs</h3>
+                            <span class="btnAdraM float-right text-lightM font-weight-bold">Total Staffs: {{$listesAgents->total()}}</span>
+                        </div>
+                    </div>
                     <div class="card-tools">
                         <!-- div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -165,6 +170,13 @@
                         </tfoot>
                     </table> --}}
                 </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if(isset($myPaginateExist))
+                            {{$listesAgents->links()}}
+                        @endif  
+                    </div>
+                </div>              
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
