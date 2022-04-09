@@ -18,8 +18,8 @@ class CongeController extends Controller
      */
     public function index()
     {
-        $listesConge = Conge::get();
-        
+        $listesConge = Conge::orderBy('id', 'DESC')->paginate(2);
+        $myPaginateCongeExist = "";
         /*foreach ($listesConge as $item) {
            //echo ($item->id.",");
             //echo ($item->agent->nom.",");//ok
@@ -32,8 +32,9 @@ class CongeController extends Controller
             //dd($N);
             //echo $item->agent_id.',';
         }*/
-       // dd($listesConge->agents());
-        return view('Pages.Conge.listesConges', compact('listesConge'));
+       //dd($listesConge->agents());
+       // dd($listesConge);
+        return view('Pages.Conge.listesConges', compact('listesConge','myPaginateCongeExist'));
     }
 
     /**
@@ -63,7 +64,6 @@ class CongeController extends Controller
             'congeDejaPris'=>'max:100',
             'nbrJrD'=>'max:100',
             'nbrJourR'=>'max:100',
-            'explicationConge'=>'max:100',
             'dateDepart'=>'max:15',
             'dateRetour'=>'max:15', 
         ]);
@@ -131,7 +131,6 @@ class CongeController extends Controller
             'congeDejaPris'=>'max:100',
             'nbrJrD'=>'max:100',
             'nbrJourR'=>'max:100',
-            'explicationConge'=>'max:100',
             'dateDepart'=>'max:15',
             'dateRetour'=>'max:15', 
         ]);

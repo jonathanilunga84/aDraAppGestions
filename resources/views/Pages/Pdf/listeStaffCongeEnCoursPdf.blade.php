@@ -9,7 +9,7 @@
                 <th scope="col">Identité</th>
                 <th scope="col">Circonstance Congé</th>
                 <th scope="col">Projet</th>
-                <th scope="col">Durée Congé</th>
+                <th scope="col">Nbr de jours prévus</th>
                 <th scope="col">Congé Deja Pris</th>
                 <th scope="col">Nbr Jour demandé</th>
                 <th scope="col">Nbr Jour Restant(s)</th>

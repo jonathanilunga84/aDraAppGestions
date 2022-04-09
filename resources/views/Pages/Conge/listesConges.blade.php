@@ -86,6 +86,12 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Liste des Congés</h3>
+                    <span class="btnAdraM float-right text-lightM font-weight-bold"> 
+                        @if(isset($myPaginateCongeExist))
+                            Total Staffs:
+                            {{$listesConge->total()}}
+                        @endif
+                    </span>
                     <div class="card-tools">
                         <!-- div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -139,6 +145,13 @@
                             @endforelse
                         </tbody>
                     </table>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if(isset($myPaginateCongeExist))
+                            {{$listesConge->links()}}
+                        @endif  
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>

@@ -29,7 +29,7 @@
                 <td>{{ $item->postnom }}</td>
                 <td>{{ $item->prenom }}</td>
                 <td>{{ $item->sexe }}</td>
-                <td>{{ $item->fonction }}fffffffbbbbbbbbbbbhhhhhhhhhhhhhhhhh</td>
+                <td>{{ $item->fonction }}</td>
                 <td>{{ Carbon\Carbon::parse($item->dateDebut)->format('d-m-Y') }}</td>
                 <td>{{ Carbon\Carbon::parse($item->dateFinPrevue)->format('d-m-Y') }}</td>
             </tr>

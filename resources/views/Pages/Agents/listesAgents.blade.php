@@ -750,7 +750,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="explicationConge">Total jours prevue</label>
+                            <label for="explicationConge">Commentaire</label>
                             <textarea class="form-control" name="explicationConge" id="explicationConge" rows="2" cols="5" placeholder="explication facultatif"></textarea>
                             <span class="text-danger error-text explicationConge_error"></span>
                         </div>
