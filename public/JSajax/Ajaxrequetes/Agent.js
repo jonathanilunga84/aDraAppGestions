@@ -516,5 +516,47 @@
     		});
 		}
 	});/* /End formModifAgent*/
+
+	/* methode pour modification des status(observation) d'un Agent(Staff) */
+	$('.linkBtnModifStatusAgent').on('click', function(event) {
+		event.preventDefault();
+		let linkModifStatus = $(this).attr('href');
+		swal.fire({
+			title: 'Modification',
+			text: "voulez-vous vraiment modifier l'observation?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: "modifier l'observation",
+		}).then((result) => {
+			if(result.isConfirmed){
+				//swal.fire('suppression OK OK');
+				$.ajax({
+					url: linkModifStatus,
+					method: 'GET',
+					data: {
+						_token: '{{csrf_token()}}'
+					},
+					success: function(response) {
+					//_token: '{{csrf_token()}}'
+						swal.fire(
+							'modification!',
+							'Observation modifié avec success!',
+							'success'
+						).then((res) => {
+							if (res.isConfirmed) {
+								//window.location.replace(routActuel);
+								window.location.reload();
+							}
+						});
+						//window.location.reload();
+					}
+				});
+			}
+		});
+
+	})
+	/* /End methode pour modification des status(observation) d'un Agent(Staff) */
 })(jQuery); 
 /* End function principal JQuery */

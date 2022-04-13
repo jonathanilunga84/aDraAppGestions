@@ -25,7 +25,7 @@
 
         <div class="col-12">
             <div class="row">
-                <div class="col-8 btn-dangerM">
+                <div class="col-7 btn-dangerM">
                     <form action="{{route('admin.conges.searchConge')}}" method="get">
                     {{-- @csrf --}}
                     <div class="row">
@@ -74,9 +74,9 @@
                         </div>
                     </form>  
                 </div -->
-                <div class="col-3 bg-primaryM">
+                <div class="col-4 bg-primaryM">
                     <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">Impression liste projet encours</button -->
-                    <a href="{{route('admin.conges.post.listeStaffCongeEnCoursPdf')}}" target="_blank" class="btn btn-block mt-2 btnAdra text-light mb-2 mt-2"><i class="fas fa-print"></i> Impression listes congés cours</a>
+                    <a href="{{route('admin.conges.post.listeStaffCongeEnCoursPdf')}}" target="_blank" class="btn btn-block mt-2 btnAdra text-light mb-2 mt-2"><i class="fas fa-print"></i> Impression listes congés en cours</a>
                 </div>
             </div>   
         </div>

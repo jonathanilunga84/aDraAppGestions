@@ -76,7 +76,10 @@ Route::group([
             /* Route pour enregistrer les document ou dossiers d'un agent */
             Route::post('/ajout/document/{id}', [PieceJointeController::class, "store"])->name('AjoutDocument.store');
             /* Route pour supprimer les ocument ou dossiers d'un agent */
-        Route::get('/delete/document/{id}', [PieceJointeController::class, "delete"])->name('deletetDocument.delete');
+            Route::get('/delete/document/{id}', [PieceJointeController::class, "delete"])->name('deletetDocument.delete');
+
+            /*  Route pour modifier le status(Observaton) Agent  */
+            Route::get('/update/status/agent/{id}', [AgentController::class, "updateStatusAgent"])->name('updateStatusAgent');
         });
 
         Route::group([

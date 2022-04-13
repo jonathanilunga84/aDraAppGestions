@@ -326,4 +326,20 @@ class AgentController extends Controller
                     ->stream();
         //return view('Pages/Pdf/listeCongeOneAgentPdf', compact('listeCongeOneAgent'));
     } 
+
+    public function updateStatusAgent($id){
+        $infosAgent = Agent::findOrfail($id);
+        if ($infosAgent->status == "encours" || $infosAgent->status == "en cours" ) {
+            //print_r($infosConge->statusConge);
+            $infosAgent->update([
+                'status' => 'terminé'
+            ]);
+        }
+        else{
+            //print_r("terminé");
+            $infosAgent->update([
+                'status' => 'en cours'
+            ]);
+        }
+    }
 }

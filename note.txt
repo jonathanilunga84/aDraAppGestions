@@ -1,0 +1,21 @@
+public function updateStatusAgent($id){
+        $infosAgent = Agent::findOrfail($id);
+        
+        if($infosAgent->status == "terminé"){
+            $infosAgent->update([
+                'status' => 'en cours'
+            ]);
+        }
+        else if($infosAgent->status != "encours" || $infosAgent->status != "en cours" ) {
+            //print_r($infosConge->statusConge);
+            $infosAgent->update([
+                'status' => 'terminé'
+            ]);
+        }
+        else{
+            //print_r("terminé");
+            $infosAgent->update([
+                'status' => 'terminé'
+            ]);
+        }
+    }

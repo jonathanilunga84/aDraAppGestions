@@ -143,7 +143,7 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-sm-12 mt-2">
-                            <p class="card-text">Observation: <strong>{{$postInfosAgent->status}}</strong></p>
+                            <p class="card-text">Observation: <strong>{{$postInfosAgent->status}}</strong> <span class="ml-3"><a href="{{route('admin.agents.updateStatusAgent',[$postInfosAgent->id])}}" class="linkBtnModifStatusAgent">modification</a></span></p>
                         </div>  
                         <div class="col-sm-12 mt-2">
                             <p class="card-text">Salaire: <strong>{{$postInfosAgent->salaires}}</strong></p>
