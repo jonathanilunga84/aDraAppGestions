@@ -1,12 +1,12 @@
 @extends('layouts.LayoutPdf')
 
 @section('content')
-	<h3>Historique des Congé pour l'agent</h3>
-	<p>Nom: {{$listeCongeOneAgent->nom}}</p>
-    <p>Postnom: {{$listeCongeOneAgent->postnom}}</p>
-    <p>Prenom: {{$listeCongeOneAgent->prenom}}</p>
-    <p>Sexe: {{$listeCongeOneAgent->sexe}}</p>
-    <p>fonction: {{$listeCongeOneAgent->fonction}}</p>
+	<h3>Liste des Congé pour l'agent</h3>
+	<p>Nom: {{$agent->nom}}</p>
+    <p>Postnom: {{$agent->postnom}}</p>
+    <p>Prenom: {{$agent->prenom}}</p>
+    <p>Sexe: {{$agent->sexe}}</p>
+    <p>fonction: {{$agent->fonction}}</p>
 	<table class="table table-borderedM mb-5">
         <thead>
             <tr class="table-dangerM">
@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-        	@forelse($listeCongeOneAgent->conges as $item)
+        	@forelse($listeCongeEncoursAgents as $item)
             <tr>
                 <td>{{$loop->index + 1 }}</td>
                 <td>{{$item->circonstanceConge}}</td>

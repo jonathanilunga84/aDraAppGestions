@@ -1,3 +1,6 @@
+#le projet doit quitté ds le page d'enregistrement de congé pour un agent
+1)dossier PDF: listeStaffCongeEnCoursPDF > Circonstaance Congé => Congé
+2)
 public function updateStatusAgent($id){
         $infosAgent = Agent::findOrfail($id);
         
@@ -19,3 +22,5 @@ public function updateStatusAgent($id){
             ]);
         }
     }
+
+git commit -m "[func], ajout du button modif status agent dans pageOneAgent"

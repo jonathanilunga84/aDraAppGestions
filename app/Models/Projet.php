@@ -22,7 +22,13 @@ class Projet extends Model
     public function agents(){
         return $this->hasMany(Agent::class);
     }
+
     public function conges(){
         return $this->hasMany(Conge::class);
+    }
+
+    public function congeAgentProjet()
+    {
+        return $this->hasManyThrough(Conge::class, Agent::class);
     }
 }

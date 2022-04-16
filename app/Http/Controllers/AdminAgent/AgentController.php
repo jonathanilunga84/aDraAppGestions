@@ -318,6 +318,7 @@ class AgentController extends Controller
         return view('Pages/Agents/listeCongeAgent',compact('listeCongeAgent','IdAgent'));
     }  
 
+    //Impression des Touts les congé d'un Agent(Staff) dont ces Congé sont en cours ou terminé
     public function listeCongeOneAgentPdf($id){
         $IdAgent = $id;
         $listeCongeOneAgent = Agent::findOrfail($id);
@@ -326,6 +327,15 @@ class AgentController extends Controller
                     ->stream();
         //return view('Pages/Pdf/listeCongeOneAgentPdf', compact('listeCongeOneAgent'));
     } 
+
+    //Impression des Touts les congé d'un Agent(Staff) dont ces Congé sont en cours
+    public function listeCongeEncoursOneAgentPdf($id){
+        $agent = Agent::findOrfail($id);
+        $listeCongeEncoursAgents = $agent->conges->where("statusConge", "en cours"); //ce une collection
+        //dd($listeCongeEncoursAgent->id); 
+        return PDF::loadView('Pages/Pdf/listeCongeEncoursOneAgentPDF', compact('agent','listeCongeEncoursAgents'))
+                    ->stream();
+    }
 
     public function updateStatusAgent($id){
         $infosAgent = Agent::findOrfail($id);

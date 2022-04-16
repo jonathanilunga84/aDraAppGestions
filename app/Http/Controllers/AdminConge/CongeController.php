@@ -233,7 +233,8 @@ class CongeController extends Controller
         $infos = $listeAgentsAffecteAuConge->agent;
         
     }
-
+    
+    //Impression des tous les Staffs dont leur Congé est en cours
     public function listeStaffCongeEnCoursPdf(){
 
         $listeStaffCongeEnCours = Conge::where('statusConge', "en cours")

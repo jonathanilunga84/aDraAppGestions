@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminProjet\ProjetController;
 use App\Http\Controllers\AdminAgent\AgentController;
 use App\Http\Controllers\AdminConge\CongeController;
 use App\Http\Controllers\PieceJointeController;
+use App\Models\Agent;
+use App\Models\Projet;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +22,12 @@ use App\Http\Controllers\PieceJointeController;
     return view('welcome');
 });*/
 Route::get('/dashboard/admin', function () {
-    return view('Pages/Dashboard');
+    $totalStaff = Agent::count();
+    $totalHomme = Agent::where('sexe', 'masculin')->count();
+    $totalFemme = Agent::where('sexe', 'feminin')->count();
+    $totalProjet = Projet::count();
+    //dd($totalStaff);
+    return view('Pages/Dashboard',compact('totalStaff','totalHomme','totalFemme','totalProjet'));
 })->name('dashboard.admin.home');
 
 /* Le groupe des Routes relatives aux administrateurs (Admin) uniquement */
@@ -44,11 +51,14 @@ Route::group([
             Route::get('/post/projet/{id}', [ProjetController::class, "show"])->name('post.show');
             Route::get('/liste/staff/affecter-au-projet/{id}', [ProjetController::class, "listeAgentsAffecteAuProjet"])->name('post.listeAgentsAffecteAuProjet');
 
-            /* cette route permet d'imprimer une liste des Agents lié à un projet' */
-            Route::get('/liste/staff/affecter-au-projet/pdf/{id}', [ProjetController::class, "listeAgentsAffecteAuProjetPdf"])->name('post.listeAgentsAffecteAuProjetPdf');
+            /* cette route permet d'imprimer une liste des Agents status encours lié à un projet' */
+            Route::get('/liste/staff/affecter-au-projet/pdf/{id}', [ProjetController::class, "listeAgentsEncoursAffecteAuProjetPdf"])->name('post.listeAgentsEncoursAffecteAuProjetPdf');
 
             /*  Route pour modifier le status(Observaton) Projet  */
             Route::get('/update/status/projet/{id}', [ProjetController::class, "updateStatusProjet"])->name('updateStatusProjet');
+
+            /* cette route permet d'imprimer une liste des Agents affecté au projet qui ont un ou plusieurs congé en cours ou terminé  */
+            Route::get('/impression/staff/affecter-au-projet/avec-conge/pdf/{id}', [ProjetController::class, "listeAgentsAffecteAuProjetQuiOnDesCongesPdf"])->name('impression.listeAgentsAffecteAuProjetQuiOnDesCongesPdf');
         });
 
         Route::group([
@@ -70,8 +80,12 @@ Route::group([
 
             /* liste des congé d'un Agent  */
             Route::get('/liste/conge/agent/{id}', [AgentController::class, "listeCongeAgent"])->name('post.listeCongeAgent');
-            /* cette Route permet d'imprimer une liste de tout le congé pour un Agent */
+
+            /* cette Route permet d'imprimer une liste de tout le congé en cours ou terminé pour un Agent */
             Route::get('/liste/conge/un-agent/pdf/{id}', [AgentController::class, "listeCongeOneAgentPdf"])->name('post.listeCongeOneAgentPdf');
+
+            /* cette Route permet d'imprimer une liste de tout les congé en cours pour un Agent */
+            Route::get('/liste/conge-encours/un-agent/pdf/{id}', [AgentController::class, "listeCongeEncoursOneAgentPdf"])->name('post.listeCongeEncoursOneAgentPdf');
 
             /* Route pour enregistrer les document ou dossiers d'un agent */
             Route::post('/ajout/document/{id}', [PieceJointeController::class, "store"])->name('AjoutDocument.store');

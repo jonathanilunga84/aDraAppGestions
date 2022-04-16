@@ -7,7 +7,7 @@
             <tr class="table-dangerM">
                 <th scope="col">#</th>
                 <th scope="col">Identité</th>
-                <th scope="col">Circonstance Congé</th>
+                <th scope="col">Congé</th>
                 <th scope="col">Projet</th>
                 <th scope="col">Nbr de jours prévus</th>
                 <th scope="col">Congé Deja Pris</th>
@@ -33,7 +33,7 @@
                 <td>{{$item->projet->intituleProjet}}</td>
                 <td>{{$item->totalJourPrevueConge}}</td>
                 <td>{{$item->congeDejaPris}}</td>
-                <td>{{$item->nbrJrD}}</td>
+                <td>{{$item->nbrJrD}}ff</td>
                 <td>{{$item->nbrJourR}}</td>
                 <td>{{ Carbon\Carbon::parse($item->dateDepart)->format('d-m-Y') }}</td>
                 <td>{{ Carbon\Carbon::parse($item->dateRetour)->format('d-m-Y') }}</td>

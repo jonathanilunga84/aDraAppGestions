@@ -49,7 +49,7 @@
 
         <!-- table -->
         <div class="col-12">
-            <div class="card" style="height: 50vh; padding-left: 10px;">
+            <div class="card" style="heightM: 50vh; padding-left: 10px;">
                 <div class="card-header">
                     <h3 class="card-title">Information sur le Projet</h3>
                     <!-- div class="card-tools">
@@ -80,8 +80,12 @@
                         </div>
                         <div class="col-sm-12 mt-2">
                             <p class="card-text">Status Projet : <strong>{{$postProjets->status}}</strong> <span class="ml-3"><a href="{{route('admin.projets.updateStatusProjet',[$postProjets->id])}}" class="linkBtnModifStatusProjet">modification</a></span></p>
-                        </div>
+                        </div>    
                         <div class="col-sm-12 mt-2">
+                            <p>Nombre de Homme dans le projet: <span class="font-weight-bold">{{$nbrHomme}}</span> </p>
+                            <p>Nombre de Femme dans le projet: <span class="font-weight-bold">{{$nbrFemme}}</span> </p>
+                        </div>                                            
+                        <div class="col-sm-12 mt-2 mb-3">
                             <p class="card-text" style="font-weight: bold">Liste des staffs affectés au projet: <strong><a href="{{route('admin.projets.post.listeAgentsAffecteAuProjet',[$postProjets->id])}}" title="click pour voir la liste des staff pour le projet">voir plus</a></strong></p>
                         </div>
                     </div>

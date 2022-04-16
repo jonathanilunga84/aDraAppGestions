@@ -43,7 +43,11 @@
                 </div -->
                 <div class="col-sm-3">
                     <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">imprimer Staff Projet</button -->
-                    <a href="{{route('admin.projets.post.listeAgentsAffecteAuProjetPdf',[$IdProjet])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2">Imprimer Staffs Projet</a>
+                    <a href="{{route('admin.projets.post.listeAgentsEncoursAffecteAuProjetPdf',[$IdProjet])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" title="impression des tout les Staffs en cours lié au projet ici"><i class="fas fa-print"></i> Imprimer Projet Staffs En cours</a>
+                </div>
+                <div class="col-sm-3">
+                    <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">imprimer Staff Projet</button -->
+                    <a href="{{route('admin.projets.impression.listeAgentsAffecteAuProjetQuiOnDesCongesPdf',[$IdProjet])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" title="Impression des touts les Staffs de ces projet dont leurs Congé sont en cours ou terminé"><i class="fas fa-print"></i> Imprimer Projet Staffs Conge</a>
                 </div>
             </div>   
         </div>
@@ -74,6 +78,10 @@
                             <p>Date fin projet : <span>{{ Carbon\Carbon::parse($listeAgentsAffecteAuProjet->dateFinProjet)->format('d-m-Y') }}</span></p>
                         </div>
                         <div class="col-sm-12 mt-2">
+                            <p>Nombre de Homme dans le projet: <span class="font-weight-bold">{{$nbrHomme}}</span> </p>
+                            <p>Nombre de Femme dans le projet: <span class="font-weight-bold">{{$nbrFemme}}</span> </p>
+                        </div>
+                        <div class="col-sm-12">
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                     <tr>
@@ -83,6 +91,7 @@
                                         <th>Prenom</th>
                                         <th>Sexe</th>
                                         <th>Fonction</th>
+                                        <th>Status</th>
                                         <th>Date début</th>
                                         <th>Date fin</th>
                                     </tr>
@@ -98,6 +107,7 @@
                                         <td>{{$item->prenom}}</td>
                                         <td>{{$item->sexe}}</td>
                                         <td>{{$item->fonction}}</td>
+                                        <td>{{$item->status}}</td>
                                         <td>{{ Carbon\Carbon::parse($item->dateDebut)->format('d-m-Y') }}</td>  
                                         <td>{{ Carbon\Carbon::parse($item->dateFinPrevue)->format('d-m-Y') }}</td>
                                     </tr>

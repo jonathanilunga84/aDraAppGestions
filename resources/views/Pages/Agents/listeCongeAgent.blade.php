@@ -42,7 +42,10 @@
                     <a href="{{route('admin.projets.listes.index')}}" class="btn btn-block mt-2" title="actualiser la page"><i class="fas fa-sync"></i></a>
                 </div -->
                 <div class="col-sm-3">
-                    <a href="{{route('admin.agents.post.listeCongeOneAgentPdf',[$IdAgent])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2">Imprimer les congés Agent</a>
+                    <a href="{{route('admin.agents.post.listeCongeOneAgentPdf',[$IdAgent])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2">Imprimer l'historique congés Agent</a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="{{route('admin.agents.post.listeCongeEncoursOneAgentPdf',[$IdAgent])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2">Imprimer les congés en cours</a>
                 </div>
             </div>   
         </div>
@@ -74,10 +77,13 @@
                                 <thead>
                                     <tr>
                                         <!-- th>Numéro projet</th -->
-                                        <th>Circonstance Conge</th>
-                                        <th>durée Conge</th>
-                                        <th>Date Depart</th>
-                                        <th>Date Retour</th>
+                                        <th>Congé</th>
+                                        <th>Nbr de jours prévus</th>
+                                        <th>Congé Deja Pris</th>
+                                        <th>Nbr Jour demandé</th>
+                                        <th>Nbr Jour Restant(s)</th>
+                                        <th>Date dernier Depart</th>
+                                        <th>Date dernier Retour</th>
                                         <th>Observation</th>
                                     </tr>
                                 </thead>
@@ -89,6 +95,9 @@
                                         <!-- td>{{$item->numeroProjet}}</td -->
                                         <td>{{$item->circonstanceConge}}</td>
                                         <td>{{$item->totalJourPrevueConge}}</td>
+                                        <td>{{$item->congeDejaPris}}</td>
+                                        <td>{{$item->nbrJrD}}</td>
+                                        <td>{{$item->nbrJourR}}</td>  
                                         <td>{{ Carbon\Carbon::parse($item->dateDepart)->format('d-m-Y') }}</td>
                                         <td>{{ Carbon\Carbon::parse($item->dateRetour)->format('d-m-Y') }}</td>
                                         <td>{{$item->statusConge}}</td>

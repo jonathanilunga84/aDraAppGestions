@@ -22,9 +22,10 @@ class ProjetController extends Controller
      */
     public function index()
     {
-        $listesProjets = Projet::all();
-        //dd($listesProjets);
-        return view('Pages.Projets.listesProjets', compact('listesProjets'));
+        //$listesProjets = Projet::all();
+        $listesProjets = Projet::orderBy('id', 'DESC')->paginate(20);
+        $myPaginateProjetExist = "";
+        return view('Pages.Projets.listesProjets', compact('listesProjets','myPaginateProjetExist'));
     }
 
     /**
@@ -82,7 +83,10 @@ class ProjetController extends Controller
     public function show($id)
     {
         $postProjets = Projet::find($id);
-        return view('Pages.Projets.postOneProjets', compact('postProjets'));
+        $nbrHomme =  $postProjets->agents->where('sexe', 'masculin')->count();
+        $nbrFemme = $postProjets->agents->where('sexe', 'feminin')->count();
+        //dd($nbrHomme);
+        return view('Pages.Projets.postOneProjets', compact('postProjets','nbrHomme','nbrFemme'));
 
 
     }
@@ -192,28 +196,42 @@ class ProjetController extends Controller
     public function listeAgentsAffecteAuProjet($id){
         $IdProjet = $id;
         $listeAgentsAffecteAuProjet = Projet::findOrfail($id);
+        $nbrHomme =  $listeAgentsAffecteAuProjet->agents->where('sexe', 'masculin')->count();
+        $nbrFemme = $listeAgentsAffecteAuProjet->agents->where('sexe', 'feminin')->count();
         //$listeAgentsAffecteAuProjet->agents;
         //dd($listeAgentsAffecteAuProjet->agents);
         /*foreach($listeAgentsAffecteAuProjet->agents as $item){
             echo ($item->id);
         }*/
-        return view('Pages/Projets/listeAgentsAffecteAuProjet', compact("listeAgentsAffecteAuProjet","IdProjet"));
+        return view('Pages/Projets/listeAgentsAffecteAuProjet', compact("listeAgentsAffecteAuProjet","IdProjet","nbrHomme","nbrFemme"));
     }
 
-    public function listeAgentsAffecteAuProjetPdf($id){
+    public function listeAgentsEncoursAffecteAuProjetPdf($id){
         $IdProjet = $id;
-        $listeAgentsAffecteAuProjet = Projet::findOrfail($IdProjet);
-        $pdf = PDF::loadView('Pages/Pdf/listeAgentsAffecteAuProjetPdf', compact('listeAgentsAffecteAuProjet'));
-        $pdf->download('invoice.pdf');
+        $listeAgentsEncoursAffecteAuProjet = Projet::findOrfail($IdProjet);
+        $agents = $listeAgentsEncoursAffecteAuProjet->agents->where('status',"en cours");
+        //dd($agents);
         //view()->share('employee',$listeAgentsAffecteAuProjet);
         //return $pdf->stream();
-        //dd("imprimerpdf");
-        return PDF::loadView('Pages/Pdf/listeAgentsAffecteAuProjetPdf', compact('listeAgentsAffecteAuProjet'))
+        return PDF::loadView('Pages/Pdf/listeAgentsEncoursAffecteAuProjetPdf', compact('listeAgentsEncoursAffecteAuProjet','agents'))
                     ->setPaper('a4', 'landscape')
                     //->setPaper('a4')
                     ->setWarnings(false)
                     ->stream();
         //return view('Pages/Pdf/listeAgentsAffecteAuProjetPdf', compact("listeAgentsAffecteAuProjet"));
+    }
+
+    public function listeAgentsAffecteAuProjetQuiOnDesCongesPdf($id){
+        $Idprojet = $id;
+        $projet = Projet::findOrfail($id);
+        $conges = $projet->congeAgentProjet->sortByDesc('id'); //OK
+        //dd($conges);
+        return PDF::loadView('Pages/Pdf/listeAgentsAffecteAuProjetQuiOnDesCongesPdf', compact('conges','projet'))
+                    ->setPaper('a4', 'landscape')
+                    //->setPaper('a4')
+                    ->setWarnings(false)
+                    ->stream();
+        //return view('Pages/Pdf/listeAgentsAffecteAuProjetQuiOnDesCongesPdf', compact('conges','projet'));
     }
 
     public function fectchAllProjetAjax(){
