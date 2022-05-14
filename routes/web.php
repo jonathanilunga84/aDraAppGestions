@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminConge\CongeController;
 use App\Http\Controllers\PieceJointeController;
 use App\Models\Agent;
 use App\Models\Projet;
+use App\Models\Conge;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,11 +24,16 @@ use App\Models\Projet;
 });*/
 Route::get('/dashboard/admin', function () {
     $totalStaff = Agent::count();
-    $totalHomme = Agent::where('sexe', 'masculin')->count();
-    $totalFemme = Agent::where('sexe', 'feminin')->count();
+    $totalStaffHommeEncours = Agent::where('sexe', 'masculin')->where('status','en cours')->count();
+    $totalStaffFemmeEncours = Agent::where('sexe', 'feminin')->where('status','en cours')->count();
+    $totalStaffsTermine = Agent::where('status','terminé')->count();
     $totalProjet = Projet::count();
-    //dd($totalStaff);
-    return view('Pages/Dashboard',compact('totalStaff','totalHomme','totalFemme','totalProjet'));
+    $totalProjetEncours = Projet::where('status','en cours')
+                                ->orWhere('status','encours')->count();
+    $totalProjetTermine = Projet::where('status','terminé')->count();
+    $totalCongeEncours = Conge::where("statusConge", 'en cours')->count();
+    //dd($totalCongeEncours);
+    return view('Pages/Dashboard',compact('totalStaff','totalStaffHommeEncours','totalStaffFemmeEncours','totalStaffsTermine','totalProjet','totalProjetEncours','totalProjetTermine','totalCongeEncours'));
 })->name('dashboard.admin.home');
 
 /* Le groupe des Routes relatives aux administrateurs (Admin) uniquement */
@@ -43,7 +49,9 @@ Route::group([
         ], function(){
             Route::get('/listes', [ProjetController::class, "index"])->name('listes.index');
             Route::get('/listes/projet/ajax', [ProjetController::class, "fectchAllProjetAjax"])->name('listesProjets.fectchAllProjetAjax');
+
             Route::get('/infos/projet/ajax', [ProjetController::class, "fectchOneProjetAjax"])->name('fectchOneProjetAjax');
+            
             Route::post('/ajout/projet', [ProjetController::class, "store"])->name('projet.store');
             Route::get('/search/projet', [ProjetController::class, "searchProjet"])->name('searchProjet');
             Route::post('/delete/projet', [ProjetController::class, "delete"])->name('projet.delete');
@@ -73,7 +81,9 @@ Route::group([
             Route::get('/search/agent/date', [AgentController::class, "searchAgentParDate"])->name('searchAgentParDate');
 
             Route::get('/listes/agent/ajax', [AgentController::class, "getAgentsAjax"])->name('listesAgents.getAgentsAjax');
-            Route::get('/infos/agent/ajax', [AgentController::class, "showInfoAgent"])->name('getInfosAgent.showInfoAgent');
+
+            Route::get('/infos/agent/ajax/', [AgentController::class, "showInfoAgent"])->name('getInfosAgent.showInfoAgent');
+
             Route::post('/ajout/agent', [AgentController::class, "store"])->name('AjoutAgent.store');
             Route::get('/delete/agent', [AgentController::class, "delete"])->name('agent.delete');
             Route::put('/update/agent', [AgentController::class, "update"])->name('agent.update');

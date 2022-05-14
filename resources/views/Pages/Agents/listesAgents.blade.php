@@ -111,14 +111,18 @@
                                 <td>{{$item->postnom}}</td>
                                 <td>{{$item->prenom}}</td>
                                 <td>{{$item->fonction}}</td>
-                                <td>{{$item->projet->intituleProjet}}</td>
+                                @if(! empty($item->projet->intituleProjet))
+                                    <td>{{$item->projet->intituleProjet}}</td>
+                                @else
+                                    <td class="text-danger">pas de projet </td>
+                                @endif
                                 <td>{{ Carbon\Carbon::parse($item->dateDebut)->format('d-m-Y') }}</td>
                                 <td>{{ Carbon\Carbon::parse($item->DateFinEffective)->format('d-m-Y') }}</td>
                                 <td>
                                     <a id="{{$item->id}}" href="{{route('admin.agents.AgentPost.show',[$item->id])}}" class="btn btn-success btnVueGlobalAgent" title="Vue globale sur le Agent"><i class="far fa-eye"></i></a>
                                     <a id="{{$item->id}}" href="{{route('admin.agents.getInfosAgent.showInfoAgent')}}" class="btn btn-primary btnModifAgent btnModifAgentGetInfos" data-toggle="modal" data-target="#modal-ModifAgent"><i class="far fa-edit"></i></a>
                                     <a id="{{$item->id}}" href="#" data-toggle="modal" class="btn btn-danger show_confirm_Delete_URLM showf btnDeleteAgent"><i class="far fa-trash-alt"></i></a>
-                                    <a id="{{$item->id}}"  href="{{route('admin.agents.getInfosAgent.showInfoAgent',[$item->id])}}" data-toggle="modal" data-target="#modal-AjoutConge" class="btn btn-info btnAjoutCongeAgent"><i class="fa fa-assistive-listening-systems"></i> CONGE</i></a>
+                                    <a id="{{$item->id}}" href="{{route('admin.agents.getInfosAgent.showInfoAgent')}}" data-toggle="modal" data-target="#modal-AjoutConge" class="btn btn-info btnAjoutCongeAgent"><i class="fa fa-assistive-listening-systems"></i> CONGE</i></a>
                                 </td>
                             </tr>
                             @empty
@@ -126,54 +130,6 @@
                             @endforelse
                         </tbody>
                     </table>
-                    {{-- <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Postnom</th>
-                                <th>Prenom</th>
-                                <th>Fonction</th>
-                                <th>Projet</th>
-                                <th>Date début Projet</th>
-                                <th>Date fin Projet</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbodyListesAgents">
-                            <p id="myC"></p>
-                            @forelse($listesAgents as $item)
-                            <tr>
-                                <td>{{$item->nom}}</td>
-                                <td>{{$item->postnom}}</td>
-                                <td>{{$item->prenom}}</td>
-                                <td>{{$item->fonction}}</td>
-                                <td>{{$item->projet->intituleProjet}}</td>
-                                <td>{{ Carbon\Carbon::parse($item->dateDebut)->format('d-m-Y') }}</td>
-                                <td>{{ Carbon\Carbon::parse($item->dateFinPrevue)->format('d-m-Y') }}</td>
-                                <td>
-                                    <a id="{{$item->id}}" href="{{route('admin.agents.AgentPost.show',[$item->id])}}" class="btn btn-success btnVueGlobalAgent" title="Vue globale sur le Agent"><i class="far fa-eye"></i></a>
-                                    <a id="{{$item->id}}" href="{{route('admin.agents.getInfosAgent.showInfoAgent')}}" class="btn btn-primary btnModifAgent btnModifAgentGetInfos" data-toggle="modal" data-target="#modal-ModifAgent"><i class="far fa-edit"></i></a>
-                                    <a id="{{$item->id}}" href="#" data-toggle="modal" class="btn btn-danger show_confirm_Delete_URLM showf btnDeleteAgent"><i class="far fa-trash-alt"></i></a>
-                                    <a id="{{$item->id}}"  href="{{route('admin.agents.getInfosAgent.showInfoAgent',[$item->id])}}" data-toggle="modal" data-target="#modal-AjoutConge" class="btn btn-info btnAjoutCongeAgent"><i class="fa fa-assistive-listening-systems"></i> CONGE</i></a>
-                                </td>
-                            </tr>
-                            @empty
-                            <h4 class="text-center">Aucun enregistrement pour le moment...</h4>
-                            @endforelse
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Postnom</th>
-                                <th>Prenom</th>
-                                <th>Fonction</th>
-                                <th>Projet</th>
-                                <th>Date début Projet</th>
-                                <th>Date fin Projet</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
-                    </table> --}}
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
@@ -382,7 +338,8 @@
                                     <label for="status">Observation</label>
                                     <select class="form-control" name="status" id="status">
                                         <option value="en cours">EN COURS</option>
-                                        <option value="Mise en disponibilité">MISE EN DISPONIBILITE</option>
+                                        <option value="terminé">TERMINER</option>
+                                        <!-- <option value="Mise en disponibilité">MISE EN DISPONIBILITE</option>
                                         <option value="Démission">DEMISSION</option>
                                         <option value="Résiliation">RESILIATION</option>
                                         <option value="Expiration">EXPIRATION</option>
@@ -390,7 +347,7 @@
                                         <option value="Nouvelle affectation">NOUVELLE AFFECTATION</option>
                                         <option value="Suspension">SUSPENSION</option>
                                         <option value="Indisponible">INDISPONIBLE</option>
-                                        <option value="deces">DECES</option>                                     
+                                        <option value="deces">DECES</option> -->                                       
                                     </select>
                                     <span class="text-danger error-text status_error"></span>
                                 </div>  
@@ -626,15 +583,7 @@
                                     <label for="status">Observation</label>
                                     <select class="form-control" name="statusModif" id="statusModif">
                                         <option value="en cours">EN COURS</option>
-                                        <option value="Mise en disponibilité">MISE EN DISPONIBILITE</option>
-                                        <option value="Démission">DEMISSION</option>
-                                        <option value="Résiliation">RESILIATION</option>
-                                        <option value="Expiration">EXPIRATION</option>
-                                        <option value="Tache additionnelles">TACHE ADDITIONNELLES</option>
-                                        <option value="Nouvelle affectation">NOUVELLE AFFECTATION</option>
-                                        <option value="Suspension">SUSPENSION</option>
-                                        <option value="Indisponible">INDISPONIBLE</option>
-                                        <option value="deces">DECES</option> 
+                                        <option value="terminé">TERMINER</option>
                                     </select>
                                     <span class="text-danger error-text statusModif_error"></span>
                                 </div>  
@@ -721,7 +670,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="totalJourPrevueConge">Total jours prevus</label>
-                                    <input type="text" name="totalJourPrevueConge" class="form-control" id="totalJourPrevueConge" placeholder="Total jours prevue pour le congé" aria-invalid="false" title="Total jours prevue pour le congé">
+                                    <input type="text" name="totalJourPrevueConge" class="form-control" id="totalJourPrevueConge" placeholder="Total jours prevus pour le congé" aria-invalid="false" title="Total jours prevue pour le congé">
                                     <span class="text-danger error-text totalJourPrevueConge_error"></span>
                                 </div>
                             </div>
@@ -744,14 +693,14 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="nbrJourR">Nombre des jours restants</label>
-                                    <input type="text" name="nbrJourR" class="form-control" id="nbrJourR" placeholder="Conge déjà pris" aria-invalid="false">
+                                    <input type="text" name="nbrJourR" class="form-control" id="nbrJourR" placeholder="Nombre des jours restants" aria-invalid="false">
                                     <span class="text-danger error-text nbrJourR_error"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="explicationConge">Commentaire</label>
-                            <textarea class="form-control" name="explicationConge" id="explicationConge" rows="2" cols="5" placeholder="explication facultatif"></textarea>
+                            <textarea class="form-control" name="explicationConge" id="explicationConge" rows="2" cols="5" placeholder="explication facultative"></textarea>
                             <span class="text-danger error-text explicationConge_error"></span>
                         </div>
                         <div class="row">
@@ -772,7 +721,7 @@
                         </div>                                      
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
                         <button id="btnSendAjoutConge" type="submit" class="btn btn-primary">Enregister</button>
                     </div>
                     </form>

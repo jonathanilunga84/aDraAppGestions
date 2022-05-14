@@ -82,8 +82,8 @@
                             <p class="card-text">Status Projet : <strong>{{$postProjets->status}}</strong> <span class="ml-3"><a href="{{route('admin.projets.updateStatusProjet',[$postProjets->id])}}" class="linkBtnModifStatusProjet">modification</a></span></p>
                         </div>    
                         <div class="col-sm-12 mt-2">
-                            <p>Nombre de Homme dans le projet: <span class="font-weight-bold">{{$nbrHomme}}</span> </p>
-                            <p>Nombre de Femme dans le projet: <span class="font-weight-bold">{{$nbrFemme}}</span> </p>
+                            <p>Nombre des Hommes dans le projet: <span class="font-weight-bold">{{$nbrHomme}}</span> </p>
+                            <p>Nombre des Femmes dans le projet: <span class="font-weight-bold">{{$nbrFemme}}</span> </p>
                         </div>                                            
                         <div class="col-sm-12 mt-2 mb-3">
                             <p class="card-text" style="font-weight: bold">Liste des staffs affectés au projet: <strong><a href="{{route('admin.projets.post.listeAgentsAffecteAuProjet',[$postProjets->id])}}" title="click pour voir la liste des staff pour le projet">voir plus</a></strong></p>

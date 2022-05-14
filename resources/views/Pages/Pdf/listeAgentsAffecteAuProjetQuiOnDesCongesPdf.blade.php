@@ -37,7 +37,7 @@
                 <td>{{$conge->circonstanceConge}}</td>
                 <td>{{$conge->totalJourPrevueConge}}</td>
                 <td>{{$conge->congeDejaPris}}</td>
-                <td>{{$conge->nbrJrD}}ff</td>
+                <td>{{$conge->nbrJrD}}</td>
                 <td>{{$conge->nbrJourR}}</td>
                 <td>{{ Carbon\Carbon::parse($conge->dateDepart)->format('d-m-Y') }}</td>
                 <td>{{ Carbon\Carbon::parse($conge->dateRetour)->format('d-m-Y') }}</td>

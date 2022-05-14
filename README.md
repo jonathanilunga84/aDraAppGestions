@@ -62,3 +62,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Pour execute l'application
+
+<p>1) execute d'abord la migration avec la commande: php artisan migrate</p>
+<p>2) execute en suite le seeder avec la commande: php artisan db:seed</p>
+<p>3) enfin execute l'appilication avec la commande: php artisan serve</p>

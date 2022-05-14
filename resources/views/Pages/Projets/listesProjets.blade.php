@@ -53,9 +53,13 @@
                 <div class="card-header">
                     <h3 class="card-title">Liste des Projets</h3>
                     <span class="btnAdraM float-right text-lightM font-weight-bold"> 
+                        Total Projets en cours:
+                        @if(isset($countProjetEncours))
+                        {{$countProjetEncours->count()}}
+                        @endif
+    
                         @if(isset($myPaginateProjetExist))
-                            Total Staffs:
-                            {{$listesProjets->total()}}
+                            
                         @endif
                     </span>
                 </div>
@@ -85,7 +89,7 @@
                                 <td>{{$item->status}}</td>
                                 <td>
                                     <a id="{{$item->id}}" href="{{route('admin.projets.post.show',[$item->id])}}" class="btn btn-success btnVueGlobal" title="Vue globale sur le projet"><i class="far fa-eye"></i></a>
-                                    <a id="{{$item->id}}" href="#" class="btn btn-primary btnEditProjet" data-toggle="modal" data-target="#modal-ModifProjet"><i class="far fa-edit"></i></a>
+                                    <a id="{{$item->id}}" href="{{route('admin.projets.fectchOneProjetAjax')}}" class="btn btn-primary btnEditProjet" data-toggle="modal" data-target="#modal-ModifProjet"><i class="far fa-edit"></i></a>
                                     <a id="{{$item->id}}" href="#" data-toggle="modal" data-target="#show_confirm_Delete_Form{{ $item->id }}" class="btn btn-danger show_confirm_Delete_Projet_URL showf" data-my="selectedLink{{$item->id}}" title="supprimer"><i class="far fa-trash-alt"></i></a>
                                 </td>
                             </tr>
@@ -148,7 +152,7 @@
                         </div>               
                         <div class="form-group">
                             <label for="lieuProjet">Lieu(s) du projet</label>
-                            <input type="text" name="lieuProjet" class="form-control" id="lieuProjet" placeholder="Entrez lieu du projet" aria-invalid="false">
+                            <input type="text" name="lieuProjet" class="form-control tailTextInput" id="lieuProjet" placeholder="Entrez lieu du projet" aria-invalid="false">
                             <span class="text-danger error-text lieuProjet_error"></span>
                         </div>                       
                     </div>
@@ -207,7 +211,7 @@
                         </div>               
                         <div class="form-group">
                             <label for="lieuProjet">Lieu(s) du projet</label>
-                            <input type="text" name="lieuProjetModif" class="form-control" id="lieuProjetModif" placeholder="Entrez lieu du projet" aria-invalid="false">
+                            <input type="text" name="lieuProjetModif" class="form-control tailTextInput" id="lieuProjetModif" placeholder="Entrez lieu du projet" aria-invalid="false">
                             <span class="text-danger error-text lieuProjetModif_error"></span>
                         </div>                       
                     </div>

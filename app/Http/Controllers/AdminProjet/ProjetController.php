@@ -24,8 +24,12 @@ class ProjetController extends Controller
     {
         //$listesProjets = Projet::all();
         $listesProjets = Projet::orderBy('id', 'DESC')->paginate(20);
+        $countProjetEncours = Projet::where('status', 'en cours')
+                                    ->orWhere('status', 'encours')
+                                    ->get();
         $myPaginateProjetExist = "";
-        return view('Pages.Projets.listesProjets', compact('listesProjets','myPaginateProjetExist'));
+        //dd($countProjetEncours);
+        return view('Pages.Projets.listesProjets', compact('listesProjets','myPaginateProjetExist','countProjetEncours'));
     }
 
     /**
@@ -199,11 +203,12 @@ class ProjetController extends Controller
         $nbrHomme =  $listeAgentsAffecteAuProjet->agents->where('sexe', 'masculin')->count();
         $nbrFemme = $listeAgentsAffecteAuProjet->agents->where('sexe', 'feminin')->count();
         //$listeAgentsAffecteAuProjet->agents;
-        //dd($listeAgentsAffecteAuProjet->agents);
+        $L_A_F_O_P = $listeAgentsAffecteAuProjet->agents()->orderBy('nom','ASC')->get();
+        //dd($listeAgentsAffecteAuProjet->agents()->orderBy('id','DESC')->get());
         /*foreach($listeAgentsAffecteAuProjet->agents as $item){
             echo ($item->id);
         }*/
-        return view('Pages/Projets/listeAgentsAffecteAuProjet', compact("listeAgentsAffecteAuProjet","IdProjet","nbrHomme","nbrFemme"));
+        return view('Pages/Projets/listeAgentsAffecteAuProjet', compact("listeAgentsAffecteAuProjet","L_A_F_O_P","IdProjet","nbrHomme","nbrFemme"));
     }
 
     public function listeAgentsEncoursAffecteAuProjetPdf($id){

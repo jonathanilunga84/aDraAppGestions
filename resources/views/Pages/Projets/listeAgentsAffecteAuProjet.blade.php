@@ -78,8 +78,8 @@
                             <p>Date fin projet : <span>{{ Carbon\Carbon::parse($listeAgentsAffecteAuProjet->dateFinProjet)->format('d-m-Y') }}</span></p>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <p>Nombre de Homme dans le projet: <span class="font-weight-bold">{{$nbrHomme}}</span> </p>
-                            <p>Nombre de Femme dans le projet: <span class="font-weight-bold">{{$nbrFemme}}</span> </p>
+                            <p>Nombre des Hommes dans le projet: <span class="font-weight-bold">{{$nbrHomme}}</span> </p>
+                            <p>Nombre des Femmes dans le projet: <span class="font-weight-bold">{{$nbrFemme}}</span> </p>
                         </div>
                         <div class="col-sm-12">
                             <table class="table table-hover text-nowrap">
@@ -99,7 +99,7 @@
                                 <!-- div id="show_all_projets_Search"></div -->
                                 <h5 class="text-center">Staff</h5>
                                 <tbody>
-                                    @forelse($listeAgentsAffecteAuProjet->agents as $item)
+                                    @forelse($L_A_F_O_P as $item)
                                     <tr>
                                         <!-- td>{{$item->numeroProjet}}</td -->
                                         <td>{{$item->nom}}</td>

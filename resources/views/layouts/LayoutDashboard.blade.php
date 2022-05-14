@@ -76,7 +76,7 @@
 
             <footer class="main-footer">
                 <div class="float-right d-none d-sm-inline">
-                    Adventist Dévelopment And Relief Agency 
+                    Adventist Development And Relief Agency 
                 </div>
                 <strong>Copyright &copy; 2022 <a href="#">ADRA</a>.</strong> tout droit reservé.
             </footer>

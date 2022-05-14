@@ -2,7 +2,10 @@
 	$('.btnAjoutCongeAgent').on('click', function(event){
 		event.preventDefault();
 		let getId = $(this).attr('id');
-		console.log(getId);
+		let getUrl = $(this).attr('href'); //'infos/agent/ajax'
+		//console.log(getId);
+		//console.log(getUrl);
+		//alert(getId);
 		//let currentElement = $(this).attr('id');
 		//console.log(currentElement);
 		//$(this).html('patienter...');
@@ -12,7 +15,8 @@
 		myV.html('Ngt My5');*/
 
 		$.ajax({
-			url: 'infos/agent/ajax',
+			/*url: 'infos/agent/ajax',*/
+			url: getUrl,
 			method: 'GET',
 			data: {
 				id: getId,
@@ -20,7 +24,7 @@
 			},
 			success: function(response) {
 				//_token: '{{csrf_token()}}'
-				console.log(response.getInfosAgent);
+				//console.log(response.getInfosAgent);
 				$("#identite").val(response.getInfosAgent.nom +" "+ response.getInfosAgent.prenom);
 				$("#identiteId").val(response.getInfosAgent.id);
 			}

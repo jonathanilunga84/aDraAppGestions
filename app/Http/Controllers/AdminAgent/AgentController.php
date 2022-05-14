@@ -21,8 +21,11 @@ class AgentController extends Controller
     public function index()
     {
         //$listesAgents = Agent::all();
-        $listesAgents = Agent::orderBy('id', 'DESC')->paginate(5);
-        $listesProjets = Projet::all();
+        //$listesAgents = Agent::orderBy('id', 'DESC')->paginate(50);
+        $listesAgents = Agent::orderBy('nom', 'ASC')->orderBy('id','DESC')->paginate(50);
+        //$listesProjets = Projet::all();
+        $listesProjets = Projet::orderBy('id', "DESC")->get(); 
+        //dd($listesProjets);
         $myPaginateExist ="";
         //$alea = rand();
         //$datas = date('dy');
@@ -302,8 +305,8 @@ class AgentController extends Controller
 
     public function showInfoAgent(Request $request)
     {
-        $id = $request->id;
-        $getInfosAgent = Agent::findOrfail($id);
+        $id1 = $request->id;
+        $getInfosAgent = Agent::findOrfail($id1);
         $projet = $getInfosAgent->projet;
         //print_r("rrrr-->".$projet);
         return response()->json([

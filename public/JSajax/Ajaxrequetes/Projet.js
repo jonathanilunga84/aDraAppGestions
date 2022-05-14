@@ -124,7 +124,9 @@
 	$('.btnEditProjet').on('click', function(event){
 		event.preventDefault();
 		let getId = $(this).attr('id');
+		let myUrl = $(this).attr('href');
 		//console.log(getId);
+		//console.log(myUrl);
 		//let currentElement = $(this).attr('id');
 		//console.log(currentElement);
 		//$(this).html('patienter...');
@@ -134,7 +136,8 @@
 		myV.html('Ngt My5');*/
 
 		$.ajax({
-			url: 'infos/projet/ajax',
+			/*url: 'infos/projet/ajax',*/
+			url: myUrl,
 			method: 'GET',
 			data: {
 				Id: getId,
@@ -142,7 +145,7 @@
 			},
 			success: function(response) {
 				//_token: '{{csrf_token()}}'
-				console.log(response.infosOneProjet);//console.log(response.getInfosProjet);
+				//console.log(response.infosOneProjet);//console.log(response.getInfosProjet);
 				$("#intituleProjetModif").val(response.infosOneProjet.intituleProjet);
 				$("#dateProjetModif").val(response.infosOneProjet.dateProjet);
 				$("#dateFinProjetModif").val(response.infosOneProjet.dateFinProjet);
