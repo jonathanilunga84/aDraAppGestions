@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Conge;
 use App\Models\Agent;
 use PDF;
+use Illuminate\Support\Facades\DB;
 
 class CongeController extends Controller
 {
@@ -18,7 +19,20 @@ class CongeController extends Controller
      */
     public function index()
     {
-        $listesConge = Conge::orderBy('id', 'DESC')->paginate(2);
+        //$listesConge = Conge::orderBy('id', 'DESC')->paginate(50);
+        //$agent = Agent::all(); //Agent::orderBy('nom', 'ASC')->paginate(50);
+        //$cong = $agent->conges;
+
+        $listesConge = DB::table('conges')
+                ->join('agents', 'conges.agent_id', 'agents.id')
+                ->select('conges.*','agents.nom','agents.postnom','agents.prenom')
+                ->orderBy('agents.nom','ASC')
+                ->paginate(50);
+                //->get();
+        //dd($listesConge); //$item->conges
+        /*foreach($agent->conges as $item){
+            echo "dd".'<br />';
+        }*/
         $myPaginateCongeExist = "";
         /*foreach ($listesConge as $item) {
            //echo ($item->id.",");
@@ -58,7 +72,7 @@ class CongeController extends Controller
         $validator = validator::make($request->all(),[
             "identiteId"=>'required',
             "identite"=>"required|string|min:2|max:100",  
-            'projet_idConge'=>'required|max:200',
+            /*'projet_idConge'=>'required|max:200',*/
             'circonstanceConge'=>"required|max:100",
             'totalJourPrevueConge'=>'max:100',
             'congeDejaPris'=>'max:100',
@@ -73,7 +87,7 @@ class CongeController extends Controller
         else{
             $data = [
                 "agent_id" => $request->identiteId,
-                "projet_id" => $request->projet_idConge,
+                /*"projet_id" => $request->projet_idConge,*/
                 "circonstanceConge" => $request->circonstanceConge,
                 "totalJourPrevueConge" => $request->totalJourPrevueConge,
                 "congeDejaPris" => $request->congeDejaPris,
@@ -236,10 +250,17 @@ class CongeController extends Controller
     
     //Impression des tous les Staffs dont leur Congé est en cours
     public function listeStaffCongeEnCoursPdf(){
-
-        $listeStaffCongeEnCours = Conge::where('statusConge', "en cours")
+        //$var = base_path('ddd');
+        //dd($var);
+        /*$listeStaffCongeEnCours = Conge::where('statusConge', "en cours")
                                         ->orWhere('statusConge',"encours")
-                                        ->get();
+                                        ->get();*/
+        $listeStaffCongeEnCours = DB::table('conges')
+                ->join('agents', 'conges.agent_id', 'agents.id')
+                ->select('conges.*','agents.nom','agents.postnom','agents.prenom')
+                ->orderBy('agents.nom','ASC')
+                //->paginate(50);
+                ->get();
         return PDF::loadView('Pages/Pdf/listeStaffCongeEnCoursPdf', compact('listeStaffCongeEnCours'))
                     ->setPaper('a4', 'landscape')
                     ->stream();

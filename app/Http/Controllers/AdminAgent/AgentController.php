@@ -24,7 +24,7 @@ class AgentController extends Controller
         //$listesAgents = Agent::orderBy('id', 'DESC')->paginate(50);
         $listesAgents = Agent::orderBy('nom', 'ASC')->orderBy('id','DESC')->paginate(50);
         //$listesProjets = Projet::all();
-        $listesProjets = Projet::orderBy('id', "DESC")->get(); 
+        $listesProjets = Projet::orderBy('intituleProjet', 'ASC')->get(); 
         //dd($listesProjets);
         $myPaginateExist ="";
         //$alea = rand();

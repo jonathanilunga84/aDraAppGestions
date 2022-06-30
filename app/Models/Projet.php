@@ -29,6 +29,6 @@ class Projet extends Model
 
     public function congeAgentProjet()
     {
-        return $this->hasManyThrough(Conge::class, Agent::class);
+        return $this->hasManyThrough(Conge::class, Agent::class)->orderBy('nom');
     }
 }

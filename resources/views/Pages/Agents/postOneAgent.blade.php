@@ -187,7 +187,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <input type="file" name="docPieceJointe" id="docPieceJointe"/>
+                                        <input type="file" name="docPieceJointe" id="docPieceJointe" required />
                                         <span class="text-danger error-text numeroProjet_error"></span>
                                     </div> 
                                     <div class="form-group">
@@ -200,7 +200,7 @@
                                         </div>
                                     </div -->
                                     <div class="form-group">
-                                        <button id="btnAjoutDocument" type="submit" class="btn text-light btnAdra btnAdraActive form-control">Enregistrer</button>
+                                        <button id="btnAjoutDocument" type="submit" class="btn btn-primary text-lightM btnAdraM btnAdraActiveM form-control">Enregistrer</button>
                                     </div>
                                 </div>
                             </div> 

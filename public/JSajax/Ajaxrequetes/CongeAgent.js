@@ -42,10 +42,10 @@
          		minlength : 2,
          		maxlength : 100
         	},
-        	projet_idConge : {
+        	/*projet_idConge : {
          		required : true, 
          		maxlength : 200
-        	},
+        	},*/
         	circonstanceConge : {
          		required : true, 
          		maxlength : 100
@@ -77,10 +77,10 @@
         		minlength : "L'identite doit avoir au minimun 2 caractère",
         		maxlength : "L'identite doit avoir au max 100 caractère"
         	},
-        	projet_idConge : {
+        	/*projet_idConge : {
         		required : "Le projet est obligatoire",
         		maxlength : "Le projet doit avoir au max 200 caractère"
-        	},
+        	},*/
         	circonstanceConge : {
         		maxlength : "Circonstance Conge doit avoir au max 100 caractère"
         	},
@@ -108,7 +108,7 @@
     		let myMethode = $("#formAjoutConge").attr('method');
     		let identiteId = $('#identiteId').val();identiteId
     		let identite = $('#identite').val();
-    		let projet_idConge = $('#projet_idConge').val();
+    		//let projet_idConge = $('#projet_idConge').val();
     		let circonstanceConge = $('#circonstanceConge').val();
     		let totalJourPrevueConge = $('#totalJourPrevueConge').val();
     		let congeDejaPris = $('#congeDejaPris').val();
@@ -128,7 +128,7 @@
 			    	_token,
 			    	identiteId,
 			        identite,
-			        projet_idConge,
+			        /*projet_idConge,*/
 			        circonstanceConge,
 			        totalJourPrevueConge,
 			        congeDejaPris,

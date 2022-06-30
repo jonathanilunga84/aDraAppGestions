@@ -19,10 +19,10 @@ class CreateCongesTable extends Migration
                 ->constrained('agents')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreignId('projet_id') 
+            /*$table->foreignId('projet_id') 
                 ->constrained('projets')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('cascade');*/
             $table->string('circonstanceConge')->nullable();
             $table->string('totalJourPrevueConge')->nullable();
             $table->string('congeDejaPris')->nullable();
@@ -47,9 +47,9 @@ class CreateCongesTable extends Migration
         Schema::table("agents", function (Blueprint $table) {
             $table->dropForeign("agent_id");
         });
-        Schema::table("projets", function (Blueprint $table) {
+        /*Schema::table("projets", function (Blueprint $table) {
             $table->dropForeign("projet_id");
-        });
+        });*/
         Schema::dropIfExists('conges');
     }
 }

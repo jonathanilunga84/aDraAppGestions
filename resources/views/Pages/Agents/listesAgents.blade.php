@@ -121,7 +121,7 @@
                                 <td>
                                     <a id="{{$item->id}}" href="{{route('admin.agents.AgentPost.show',[$item->id])}}" class="btn btn-success btnVueGlobalAgent" title="Vue globale sur le Agent"><i class="far fa-eye"></i></a>
                                     <a id="{{$item->id}}" href="{{route('admin.agents.getInfosAgent.showInfoAgent')}}" class="btn btn-primary btnModifAgent btnModifAgentGetInfos" data-toggle="modal" data-target="#modal-ModifAgent"><i class="far fa-edit"></i></a>
-                                    <a id="{{$item->id}}" href="#" data-toggle="modal" class="btn btn-danger show_confirm_Delete_URLM showf btnDeleteAgent"><i class="far fa-trash-alt"></i></a>
+                                    <a id="{{$item->id}}" href="{{route('admin.agents.agent.delete')}}" data-toggle="modal" class="btn btn-danger show_confirm_Delete_URLM showf btnDeleteAgent"><i class="far fa-trash-alt"></i></a>
                                     <a id="{{$item->id}}" href="{{route('admin.agents.getInfosAgent.showInfoAgent')}}" data-toggle="modal" data-target="#modal-AjoutConge" class="btn btn-info btnAjoutCongeAgent"><i class="fa fa-assistive-listening-systems"></i> CONGE</i></a>
                                 </td>
                             </tr>
@@ -641,9 +641,9 @@
                             <input type="text" name="identite" class="form-control" id="identite" placeholder="encours de chargement..." aria-invalid="false">
                             <span class="text-danger error-text identite_error"></span>
                         </div> 
-                        <div class="form-group">
+                        <!-- div class="form-group">
                             <label for="projet_idConge">Projet</label>
-                            <select class="form-control" name="projet_idConge" id="projet_idConge">
+                           <select class="form-control" name="projet_idConge" id="projet_idConge">
                                 <option value="">---Select Projet---</option>
                                 @forelse($listesProjets as $listeprojet)
                                 <option value="{{$listeprojet->id}}">{{$listeprojet->intituleProjet}}</option>
@@ -652,7 +652,7 @@
                                 @endforelse
                             </select>
                             <span class="text-danger error-text projet_idConge_error"></span>
-                        </div> 
+                        </div -->  
                         <div class="form-group">
                             <label for="circonstanceConge">Circonstance Congé</label>
                             <select class="form-control" name="circonstanceConge" id="circonstanceConge">

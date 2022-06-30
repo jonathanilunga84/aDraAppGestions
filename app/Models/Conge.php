@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Conge extends Model
 {
     use HasFactory;
-    protected $fillable = ['agent_id','projet_id','circonstanceConge','totalJourPrevueConge','congeDejaPris','nbrJrD','nbrJourR','explicationConge','dateDepart','dateRetour','statusConge',];
+    //'projet_id',
+    protected $fillable = ['agent_id','circonstanceConge','totalJourPrevueConge','congeDejaPris','nbrJrD','nbrJourR','explicationConge','dateDepart','dateRetour','statusConge',];
 
     //un Agent peu avoir un ou plusiers Conge l'inverse est permis
     public function agent(){

@@ -1,0 +1,1 @@
+<h1>Page non trouvé <a href="{{route('login')}}">Retour</a></h1>

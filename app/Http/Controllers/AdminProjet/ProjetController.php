@@ -23,7 +23,7 @@ class ProjetController extends Controller
     public function index()
     {
         //$listesProjets = Projet::all();
-        $listesProjets = Projet::orderBy('id', 'DESC')->paginate(20);
+        $listesProjets = Projet::orderBy('intituleProjet', 'ASC')->paginate(20);
         $countProjetEncours = Projet::where('status', 'en cours')
                                     ->orWhere('status', 'encours')
                                     ->get();
@@ -57,7 +57,7 @@ class ProjetController extends Controller
             'intituleProjet'=>'required|string|min:2|max:100',
             'dateProjet'=>"required|string|min:2|max:15",
             'dateFinProjet'=>'required|string|min:2|max:15',
-            'lieuProjet'=>'required|string|min:2|max:15', 
+            'lieuProjet'=>'required|string|min:2|max:200', 
         ]);
         if ($validator->fails()) {
             return response()->json(['status'=>0, 'error'=>$validator->messages()]);
@@ -214,7 +214,22 @@ class ProjetController extends Controller
     public function listeAgentsEncoursAffecteAuProjetPdf($id){
         $IdProjet = $id;
         $listeAgentsEncoursAffecteAuProjet = Projet::findOrfail($IdProjet);
-        $agents = $listeAgentsEncoursAffecteAuProjet->agents->where('status',"en cours");
+        $agents = $listeAgentsEncoursAffecteAuProjet->agents()->where('status',"en cours")->orderBy('nom', 'ASC')->get();
+        //dd($agents);
+        //view()->share('employee',$listeAgentsAffecteAuProjet);
+        //return $pdf->stream();
+        return PDF::loadView('Pages/Pdf/listeAgentsEncoursAffecteAuProjetPdf', compact('listeAgentsEncoursAffecteAuProjet','agents'))
+                    ->setPaper('a4', 'landscape')
+                    //->setPaper('a4')
+                    ->setWarnings(false)
+                    ->stream();
+        //return view('Pages/Pdf/listeAgentsAffecteAuProjetPdf', compact("listeAgentsAffecteAuProjet"));
+    }
+
+    public function listeAgentsEncoursTermineAffecteAuProjetPdf($id){
+        $IdProjet = $id;
+        $listeAgentsEncoursAffecteAuProjet = Projet::findOrfail($IdProjet);
+        $agents = $listeAgentsEncoursAffecteAuProjet->agents()->orderBy('nom', 'ASC')->get();//->where('status',"en cours");
         //dd($agents);
         //view()->share('employee',$listeAgentsAffecteAuProjet);
         //return $pdf->stream();
@@ -229,7 +244,8 @@ class ProjetController extends Controller
     public function listeAgentsAffecteAuProjetQuiOnDesCongesPdf($id){
         $Idprojet = $id;
         $projet = Projet::findOrfail($id);
-        $conges = $projet->congeAgentProjet->sortByDesc('id'); //OK
+        //$conges = $projet->congeAgentProjet->sortByDesc('nom'); //OK
+        $conges = $projet->congeAgentProjet->sortByDesc('nom'); //OK
         //dd($conges);
         return PDF::loadView('Pages/Pdf/listeAgentsAffecteAuProjetQuiOnDesCongesPdf', compact('conges','projet'))
                     ->setPaper('a4', 'landscape')

@@ -24,3 +24,5 @@ public function updateStatusAgent($id){
     }
 
 git commit -m "[func], ajout du button modif status agent dans pageOneAgent"
+
+{{asset('storage/'.$pieceJointe->documentsAgnet)}} storage/app/public/

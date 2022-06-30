@@ -33,7 +33,7 @@
                     <a href="#" class="nav-link active {{setMenuClass('admin.projets.', 'active')}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Projet
+                            Projets
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -67,7 +67,7 @@
                     <a href="#" class="nav-link active {{setMenuClass('admin.conges.', 'active')}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Congé
+                            Congés
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>

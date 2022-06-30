@@ -1,6 +1,7 @@
 @extends('layouts.LayoutPdf')
 
 @section('content')
+    
 	<h5>Liste des Staffs Congé en cours</h5>
 	<table class="table table-borderedM mb-5">
         <thead>
@@ -8,7 +9,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Identité</th>
                 <th scope="col">Congé</th>
-                <th scope="col">Projet</th>
+                <!-- th scope="col">Projet</th -->
                 <th scope="col">Nbr de jours prévus</th>
                 <th scope="col">Congé Deja Pris</th>
                 <th scope="col">Nbr Jour demandé</th>
@@ -22,18 +23,25 @@
         	@forelse($listeStaffCongeEnCours as $item)
             <tr>
                 <td>{{$loop->index + 1 }}</td>
-                <td>
+                <!-- td>
                     @if(! empty($item->agent->prenom))
                         {{$item->agent->nom}} {{$item->agent->postnom}}
                     @else
                         pas de nom trouvé
                     @endif
+                </td -->
+                <td>
+                    @if(! empty($item->nom))
+                        {{$item->nom}} {{$item->postnom}} {{$item->prenom}}
+                    @else
+                        pas de nom trouvé
+                    @endif
                 </td>
                 <td>{{$item->circonstanceConge}}</td>
-                <td>{{$item->projet->intituleProjet}}</td>
+                {{-- <td>{{$item->projet->intituleProjet}}</td> --}}
                 <td>{{$item->totalJourPrevueConge}}</td>
                 <td>{{$item->congeDejaPris}}</td>
-                <td>{{$item->nbrJrD}}ff</td>
+                <td>{{$item->nbrJrD}}</td>
                 <td>{{$item->nbrJourR}}</td>
                 <td>{{ Carbon\Carbon::parse($item->dateDepart)->format('d-m-Y') }}</td>
                 <td>{{ Carbon\Carbon::parse($item->dateRetour)->format('d-m-Y') }}</td>

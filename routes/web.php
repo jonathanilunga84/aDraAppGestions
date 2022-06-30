@@ -62,6 +62,9 @@ Route::group([
             /* cette route permet d'imprimer une liste des Agents status encours lié à un projet' */
             Route::get('/liste/staff/affecter-au-projet/pdf/{id}', [ProjetController::class, "listeAgentsEncoursAffecteAuProjetPdf"])->name('post.listeAgentsEncoursAffecteAuProjetPdf');
 
+            /* cette route permet d'imprimer une liste des Agents status encours ou terminé lié à un projet' */
+            Route::get('/liste/staff/affecter-au-projet-encourt-termine/pdf/{id}', [ProjetController::class, "listeAgentsEncoursTermineAffecteAuProjetPdf"])->name('post.listeAgentsEncoursTermineAffecteAuProjetPdf');
+
             /*  Route pour modifier le status(Observaton) Projet  */
             Route::get('/update/status/projet/{id}', [ProjetController::class, "updateStatusProjet"])->name('updateStatusProjet');
 
@@ -147,6 +150,6 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::fallback(function(){
+/*Route::fallback(function(){
     return view('auth/login'); //'view 404';
-});
+});*/

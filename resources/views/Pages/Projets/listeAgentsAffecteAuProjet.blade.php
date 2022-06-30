@@ -43,11 +43,15 @@
                 </div -->
                 <div class="col-sm-3">
                     <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">imprimer Staff Projet</button -->
-                    <a href="{{route('admin.projets.post.listeAgentsEncoursAffecteAuProjetPdf',[$IdProjet])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" title="impression des tout les Staffs en cours lié au projet ici"><i class="fas fa-print"></i> Imprimer Projet Staffs En cours</a>
+                    <a href="{{route('admin.projets.post.listeAgentsEncoursAffecteAuProjetPdf',[$IdProjet])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" title="impression des tout les Staffs en cours lié au projet ici"><i class="fas fa-print"></i> Imprimer Staffs En cours</a>
                 </div>
                 <div class="col-sm-3">
                     <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">imprimer Staff Projet</button -->
-                    <a href="{{route('admin.projets.impression.listeAgentsAffecteAuProjetQuiOnDesCongesPdf',[$IdProjet])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" title="Impression des touts les Staffs de ces projet dont leurs Congé sont en cours ou terminé"><i class="fas fa-print"></i> Imprimer Projet Staffs Conge</a>
+                    <a href="{{route('admin.projets.post.listeAgentsEncoursTermineAffecteAuProjetPdf',[$IdProjet])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" title="impression des tout les Staffs en cours lié au projet ici"><i class="fas fa-print"></i> Imprimer Staffs En cours et terminés</a>
+                </div>
+                <div class="col-sm-3">
+                    <!-- button type="button" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" data-toggle="modal" data-target="#modal-AjoutProjet">imprimer Staff Projet</button -->
+                    <a href="{{route('admin.projets.impression.listeAgentsAffecteAuProjetQuiOnDesCongesPdf',[$IdProjet])}}" target="_blank" class="btn btn-block btn-primaryM btnAdra text-light mb-2 mt-2" title="Impression des touts les Staffs de ces projet dont leurs Congé sont en cours ou terminé"><i class="fas fa-print"></i> Imprimer Congés Staffs</a>
                 </div>
             </div>   
         </div>

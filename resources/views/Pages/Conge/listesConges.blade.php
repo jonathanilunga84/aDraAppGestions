@@ -114,18 +114,29 @@
                                 <th>Date depart</th>
                                 <th>Date retour</th>
                                 <th>Observation</th>
-                                <th>Projét</th>
+                                <!-- th>Projét</th -->
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($listesConge as $item)
                             <tr> 
-                                <td>
+                                <!-- td>
                                 @if(! empty($item->agent->nom))
                                     {{$item->agent->nom}} {{$item->agent->postnom}} {{$item->agent->prenom}}
                                 @else
                                     pas de nom trouvé
+                                @endif
+                                </td -->
+                                <td>
+                                @if(! empty($item->nom))
+                                    {{$item->nom}} {{$item->postnom}} {{$item->prenom}}
+                                @else
+                                    @if(! empty($item->agent->nom))
+                                        {{$item->agent->nom}} {{$item->agent->postnom}} {{$item->agent->prenom}}
+                                     @else
+                                        pas de nom trouvé
+                                     @endif
                                 @endif
                                 </td>
                                 <td>{{$item->circonstanceConge}}</td>
@@ -133,7 +144,7 @@
                                 <td><span class="tag tag-success">{{ Carbon\Carbon::parse($item->dateDepart)->format('d-m-Y') }}</span></td>
                                 <td>{{ Carbon\Carbon::parse($item->dateRetour)->format('d-m-Y') }}</td>
                                 <td>{{$item->statusConge}}</td>
-                                <td>@if(! empty($item->projet->intituleProjet)){{$item->projet->intituleProjet}}@else impossible de trouvé le Projet concerné @endif</td>
+                                <!-- td>@if(! empty($item->projet->intituleProjet)){{$item->projet->intituleProjet}}@else impossible de trouvé le Projet concerné @endif</td -->
                                 <td>
                                     <a id="{{$item->id}}" href="{{route('admin.conges.postConge.show',[$item->id])}}" class="btn btn-success btnVueGlobalConge" title="Vue global Congé"><i class="far fa-eye"></i></a>
                                     <a href="{{route('admin.conges.EditFormConge',[$item->id])}}" class="btn btn-primary" title="Modification"><i class="far fa-edit"></i></a> 

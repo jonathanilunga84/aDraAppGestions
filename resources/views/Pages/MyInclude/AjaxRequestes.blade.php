@@ -40,6 +40,7 @@
 							'Projet suppremer avec success!',
 							'success'
 						);
+						window.location.reload();
 					}
 				});
 			}

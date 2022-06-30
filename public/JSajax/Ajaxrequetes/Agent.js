@@ -200,6 +200,7 @@
 			        		$('input[type=text]').val('');
 			        	    console.log(data.messageSucces);
 					        alert(data.messageSucces);
+					        window.location.reload();
 					        //$('#successMessage').html('Votre messages est bien envoyer avec succes');
 					        $('#btnSendAgent').html('Enregister');
 					        $('#btnSendAgent').attr('disabled',false);
@@ -222,7 +223,9 @@
 	$('.btnDeleteAgent').on('click', function(event){
 		event.preventDefault();
 		let getId = $(this).attr('id');
-		console.log(getId);
+		let getUrl = $(this).attr('href');
+		//console.log(getId +'-'+ getId);
+		//alert(getUrl+'-'+ getId);
 		swal.fire({
 			title: 'Suppression',
 			text: 'voulez-vous vraiment supprimer cette Agent',
@@ -233,9 +236,9 @@
 			confirmButtonText: 'supprimer Agent',
 		}).then((result) => {
 			if(result.isConfirmed){
-				//swal.fire('suppression OK OK');
+				//swal.fire('suppression OK OK'); 'delete/agent'
 				$.ajax({
-					url: 'delete/agent',
+					url: getUrl,
 					method: 'GET',
 					data: {
 						Id: getId,
@@ -249,6 +252,7 @@
 							'Agent suppremer avec success!',
 							'success'
 						);
+						window.location.reload();
 						//$("#identite").val(response.getInfosAgent.nom +" "+ response.getInfosAgent.prenom);
 						//$("#identiteId").val(response.getInfosAgent.id);
 					}

@@ -24,7 +24,7 @@
         	lieuProjet : {
          		required : true,
          		minlength : 2,
-         		maxlength : 100
+         		maxlength : 200
         	}
 		},
 		messages: {
@@ -50,7 +50,7 @@
         	lieuProjet : {
         		required : 'Le lieu(e) du projet est obligatoire',
         		minlength : 'Le lieu(e) du projet doit avoir au minimun 2 caractère',
-        		maxlength : 'Le lieu(e) du projet doit avoir au max 100 caractère'
+        		maxlength : 'Le lieu(e) du projet doit avoir au max 200 caractère'
         	}
 		},
 		submitHandler: function(form){
@@ -299,7 +299,7 @@
 		console.log('Id a Sup-> ' +Id);
 		swal.fire({
 			title: 'Suppression',
-			text: 'voulez-vous vraiment supprimer ce projet',
+			text: 'voulez-vous vraiment supprimer ce projetM',
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
