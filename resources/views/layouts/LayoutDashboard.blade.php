@@ -61,13 +61,7 @@
                             <li class="list-group-item">
                                 <a href="#" class="d-flex align-items-center float-rightM"><i class="fa fa-user pr-2"></i><b>Mon profile</b></a>
                             </li>
-                        </ul>
-                        <a class="btn btn-primaryM btn-block btnAdra" href="{{route('logout')}}"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();"><b>Déconnexion</b></a>
-                        <form id="logout-form" method="POST" action="{{ route('logout') }}">
-                            @csrf
-                        </form>
+                        </ul>                        
                     </div>
                     <!-- /.card-body -->
                 </div>
